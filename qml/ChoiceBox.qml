@@ -28,18 +28,44 @@ Rectangle {
         elide: Text.ElideRight
     }
     Glyph { x: parent.width - 24; anchors.verticalCenter: parent.verticalCenter; name: "chevronDown"; color: Theme.textSecondary }
-    MouseArea { id: area; anchors.fill: parent; hoverEnabled: true; onClicked: popup.opened ? popup.close() : popup.open() }
+    MouseArea {
+        id: area
+        anchors.fill: parent
+        hoverEnabled: true
+        onClicked: {
+            if (popup.opened) {
+                popup.close()
+            } else {
+                popup.reposition()
+                popup.open()
+            }
+        }
+    }
 
     Popup {
         id: popup
         parent: Overlay.overlay
         padding: 4
-        x: root.mapToItem(Overlay.overlay, 0, 0).x
-        y: Math.min(root.mapToItem(Overlay.overlay, 0, 0).y + root.height + 2, Overlay.overlay.height - height - 4)
         width: root.width
         height: Math.min(column.implicitHeight + 8, 320)
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
         background: Rectangle { color: Theme.flyout; radius: 8; border.width: 1; border.color: Theme.flyoutBorder }
+
+        function reposition() {
+            var overlay = Overlay.overlay || (root.Window ? root.Window.contentItem : null)
+            if (!overlay) return
+            var p = root.mapToItem(overlay, 0, 0)
+            popup.x = Math.max(4, Math.min(p.x, overlay.width - popup.width - 4))
+            if (p.y + root.height + popup.height + 4 <= overlay.height) {
+                popup.y = p.y + root.height + 2
+            } else if (p.y - popup.height - 2 >= 0) {
+                popup.y = p.y - popup.height - 2
+            } else {
+                popup.y = Math.max(4, overlay.height - popup.height - 4)
+            }
+        }
+
+        onAboutToShow: reposition()
         contentItem: Flickable {
             clip: true
             contentHeight: column.implicitHeight

@@ -246,12 +246,13 @@ ApplicationWindow {
                 return
             }
         }
-        const page = settingsComponent.createObject(pages)
+        const page = settingsComponent.createObject(pages, pageId ? { page: pageId } : {})
         page.closeRequested.connect(function() { const i = win.pageList.indexOf(page); if (i >= 0) win.closeTab(i) })
         page.titleChanged.connect(function() { win.refreshTitles() })
         pageList = pageList.concat([page])
         tabs.append({ title: page.title, profileId: "", kind: "settings", tabColor: "", custom: "" })
         selectTab(tabs.count - 1)
+        if (pageId) page.open(pageId)
     }
     // The window that holds initialCols x initialRows cells (120x30 at 100%: 1115x628, as measured).
     function fitToInitialSize() {
@@ -313,7 +314,6 @@ ApplicationWindow {
         for (const p of ProfileManager.profiles)
             if (win.profileName.length > 0 && (p.guid === win.profileName || p.name.toLowerCase() === win.profileName.toLowerCase())) guid = p.guid
         newTab(guid, win.workingDirectory, win.program, win.arguments)
-        Qt.callLater(fitToInitialSize)
         if (win.startFullscreen) visibility = Window.FullScreen
         else if (win.startMaximized || AppSettings.globals.launchMode === "maximized") visibility = Window.Maximized
         else if (AppSettings.globals.launchMode === "fullscreen") visibility = Window.FullScreen

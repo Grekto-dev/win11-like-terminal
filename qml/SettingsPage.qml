@@ -9,6 +9,7 @@ Rectangle {
     id: root
 
     property string page: "startup"
+    onPageChanged: { if (flick) flick.contentY = 0 }
     property bool current: false
     property bool windowActive: true
     readonly property color background: "#0c0c0c"   // the tab's colour: the terminal's, as in the original
@@ -37,7 +38,7 @@ Rectangle {
             { id: "compat", label: qsTr("Compatibility"), icon: "wrench" },
             { id: "actions", label: qsTr("Actions"), icon: "keyboard" },
             { id: "newtab", label: qsTr("New tab menu"), icon: "apps_list_detail" },
-            { id: "about", label: qsTr("About"), icon: "question" }
+            { id: "about", label: qsTr("About"), icon: "info" }
         ]
     }
     function schemeChoices() {
@@ -175,9 +176,12 @@ Rectangle {
         case "compat": return [
             { type: "danger", title: qsTr("Clear cache"), desc: qsTr("The cache stores data related to saved sessions and automatically generated profiles."), button: qsTr("Clear"), action: "clearCache" },
             { type: "danger", title: qsTr("Reset to default settings"), button: qsTr("Restore"), action: "reset" } ]
-        case "newtab": return [ { type: "info", text: qsTr("The new tab menu lists the profiles; it is edited in settings.json (newTabMenu).") } ]
-        case "about": return [ { type: "about" } ]
-        case "defaults": return profileRows("d", true)
+        case "about": return [
+            { type: "aboutCard", title: qsTr("Win11-Like Terminal for Linux"), desc: qsTr("A standalone, modern Windows 11-style terminal emulator built for Linux Mint and other distributions."), tag: "v0.9.0" },
+            { type: "aboutCard", title: qsTr("Version and Environment"), desc: qsTr("Application version: %1\nQt Runtime: %2\nPlatform: Linux (%3)").arg("0.9.0").arg(AppSettings.qtVersion).arg(Qt.platform.os) },
+            { type: "aboutCard", title: qsTr("Source Code & Repository"), desc: "https://github.com/Grekto-dev/win11-like-terminal", link: "https://github.com/Grekto-dev/win11-like-terminal" },
+            { type: "aboutCard", title: qsTr("License"), desc: qsTr("Open source under the MIT License. Includes Cascadia Mono (SIL OFL), libvterm (MIT), and Fluent UI System Icons (MIT).") }
+        ]
         case "defaults:appearance": return appearanceRows("d")
         case "defaults:emulation": return emulationRows("d")
         case "defaults:advanced": return advancedRows("d")
@@ -355,7 +359,7 @@ Rectangle {
                             : modelData.type === "language" ? languageRow
                             : modelData.type === "backgroundImage" ? backgroundImageRow
                             : modelData.type === "bellSound" ? bellSoundRow
-                            : modelData.type === "about" ? aboutRow
+                            : modelData.type === "aboutCard" ? aboutCardRow
                             : modelData.type === "field" ? fieldRow : modelData.type === "number" ? numberRow
                             : modelData.type === "size" ? sizeRow : modelData.type === "section" ? sectionRow
                             : modelData.type === "preview" ? previewRow : modelData.type === "decimal" ? decimalRow
@@ -862,35 +866,25 @@ Rectangle {
                 }
             }
         } }
-    Component { id: aboutRow
-        Column {
-            width: body.width
-            spacing: 12
-            SettingCard {
-                title: qsTr("Win11-Like Terminal for Linux")
-                description: qsTr("A standalone, modern Windows 11-style terminal emulator built for Linux Mint and other distributions.")
-                Row {
-                    spacing: 8
-                    Rectangle {
-                        width: verText.width + 20; height: 28; radius: 14; color: Theme.accentLight
-                        Text { id: verText; anchors.centerIn: parent; text: "v0.9.0"; color: Theme.accentText; font.family: Theme.fontFamily; font.pixelSize: 13; font.bold: true }
-                    }
+    Component { id: aboutCardRow
+        SettingCard {
+            width: parent ? parent.width : implicitWidth
+            title: modelData.title
+            description: modelData.desc || ""
+            clickable: modelData.link !== undefined
+            onClicked: if (modelData.link) Launcher.openUrl(modelData.link)
+
+            Row {
+                visible: modelData.tag !== undefined
+                spacing: 8
+                Rectangle {
+                    width: verText.width + 20; height: 28; radius: 14; color: Theme.accentLight
+                    Text { id: verText; anchors.centerIn: parent; text: modelData.tag || ""; color: Theme.accentText; font.family: Theme.fontFamily; font.pixelSize: 13; font.bold: true }
                 }
             }
-            SettingCard {
-                title: qsTr("Version and Environment")
-                description: qsTr("Application version: %1\nQt Runtime: %2\nPlatform: Linux (%3)").arg("0.9.0").arg(Qt.version).arg(Qt.platform.os)
-            }
-            SettingCard {
-                title: qsTr("Source Code & Repository")
-                description: "https://github.com/Grekto-dev/win11-like-terminal"
-                clickable: true
-                onClicked: Launcher.openUrl("https://github.com/Grekto-dev/win11-like-terminal")
-                Glyph { name: "chevronDown"; rotation: -90; color: Theme.text }
-            }
-            SettingCard {
-                title: qsTr("License")
-                description: qsTr("Open source under the MIT License. Includes Cascadia Mono (SIL OFL), libvterm (MIT), and Fluent UI System Icons (MIT).")
+            Glyph {
+                visible: modelData.link !== undefined
+                name: "chevronDown"; rotation: -90; color: Theme.text
             }
         } }
     Component { id: fieldRow

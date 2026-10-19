@@ -220,6 +220,9 @@
     <file alias="globe_search_20_regular.svg">fluent/globe_search_20_regular.svg</file>
     <file alias="globe_search_24_filled.svg">fluent/globe_search_24_filled.svg</file>
     <file alias="globe_search_24_regular.svg">fluent/globe_search_24_regular.svg</file>
+    <file alias="info_16_regular.svg">fluent/info_16_regular.svg</file>
+    <file alias="info_20_regular.svg">fluent/info_20_regular.svg</file>
+    <file alias="info_24_regular.svg">fluent/info_24_regular.svg</file>
     <file alias="keyboard_16_filled.svg">fluent/keyboard_16_filled.svg</file>
     <file alias="keyboard_16_regular.svg">fluent/keyboard_16_regular.svg</file>
     <file alias="keyboard_20_filled.svg">fluent/keyboard_20_filled.svg</file>

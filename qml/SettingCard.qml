@@ -15,6 +15,8 @@ Rectangle {
     property bool clickable: false
     signal clicked
 
+    implicitWidth: 600
+    width: parent ? parent.width : implicitWidth
     implicitHeight: Math.max(62, textColumn.implicitHeight + 26)
     radius: 4
     color: area.containsMouse && clickable ? Theme.cardHover : Theme.card
@@ -25,7 +27,7 @@ Rectangle {
         id: textColumn
         x: root.icon.length > 0 ? 50 : 16
         anchors.verticalCenter: parent.verticalCenter
-        width: parent.width - (root.icon.length > 0 ? 66 : 32) - (slot.childrenRect.width > 0 ? slot.childrenRect.width + 24 : 0)
+        width: Math.max(50, parent.width - (root.icon.length > 0 ? 66 : 32) - (slot.childrenRect.width > 0 ? slot.childrenRect.width + 24 : 0))
         spacing: 2
         Text {
             width: parent.width
@@ -49,11 +51,12 @@ Rectangle {
     FluentSymbol { visible: root.icon.length > 0; x: 16; anchors.verticalCenter: parent.verticalCenter; name: root.icon; size: 20; variant: "regular"; color: Theme.text }
     Item {
         id: slot
+        z: 1
         anchors.right: parent.right
         anchors.rightMargin: 17
         anchors.verticalCenter: parent.verticalCenter
         width: childrenRect.width
         height: childrenRect.height
     }
-    MouseArea { id: area; anchors.fill: parent; hoverEnabled: root.clickable; enabled: root.clickable; z: -1; onClicked: root.clicked() }
+    MouseArea { id: area; anchors.fill: parent; hoverEnabled: root.clickable; enabled: root.clickable; onClicked: root.clicked() }
 }

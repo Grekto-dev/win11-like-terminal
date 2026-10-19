@@ -29,8 +29,10 @@ class AppSettings : public QObject
     Q_PROPERTY(QVariantList keybindings READ keybindings NOTIFY changed)
     Q_PROPERTY(QString filePath READ filePath CONSTANT)
     Q_PROPERTY(QString error READ error NOTIFY changed)
+    Q_PROPERTY(QString qtVersion READ qtVersion CONSTANT)
 
 public:
+    QString qtVersion() const { return QString::fromLatin1(qVersion()); }
     static AppSettings *instance();
     /** For the QML singleton: the one instance, owned by C++. */
     static AppSettings *create(QQmlEngine *, QJSEngine *);
