@@ -35,7 +35,6 @@ Item {
         Shape {
             anchors.centerIn: parent
             width: 8; height: 6
-            preferredRendererType: Shape.CurveRenderer
             ShapePath {
                 fillColor: "#9f9f9f"
                 strokeColor: "transparent"

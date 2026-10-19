@@ -20,7 +20,6 @@ Item {
     }
     Shape {
         anchors.fill: parent
-        preferredRendererType: Shape.CurveRenderer
         ShapePath {
             strokeColor: root.color; strokeWidth: 1; fillColor: "transparent"
             PathMove { x: 3.5; y: 5.5 }

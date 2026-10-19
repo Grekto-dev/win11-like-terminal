@@ -242,7 +242,6 @@ Item {
         Shape {
             anchors.centerIn: parent
             width: 6; height: 8
-            preferredRendererType: Shape.CurveRenderer
             ShapePath {
                 fillColor: arrow.active ? Theme.text : Theme.textDisabled
                 strokeColor: "transparent"

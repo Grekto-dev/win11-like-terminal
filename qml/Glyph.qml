@@ -25,20 +25,17 @@ Item {
 
     Shape {
         anchors.fill: parent
-        preferredRendererType: Shape.CurveRenderer
         visible: root.name === "minimize"
         Stroke { PathMove { x: 0; y: 4.5 } PathLine { x: 10; y: 4.5 } }
     }
     Shape {
         anchors.fill: parent
-        preferredRendererType: Shape.CurveRenderer
         visible: root.name === "plus"
         Stroke { PathMove { x: 0; y: 4.5 } PathLine { x: 9; y: 4.5 } }
         Stroke { PathMove { x: 4.5; y: 0 } PathLine { x: 4.5; y: 9 } }
     }
     Shape {
         anchors.fill: parent
-        preferredRendererType: Shape.CurveRenderer
         visible: root.name === "close" || root.name === "tabClose"
         Stroke { PathMove { x: 0.5; y: 0.5 } PathLine { x: root.box - 0.5; y: root.box - 0.5 } }
         Stroke { PathMove { x: root.box - 0.5; y: 0.5 } PathLine { x: 0.5; y: root.box - 0.5 } }
@@ -60,8 +57,7 @@ Item {
         }
         Shape {
             anchors.fill: parent
-            preferredRendererType: Shape.CurveRenderer
-            Stroke {
+                Stroke {
                 PathMove { x: 2.5; y: 1.5 }
                 PathLine { x: 2.5; y: 0.5 }
                 PathLine { x: 8.5; y: 0.5 }
@@ -74,7 +70,6 @@ Item {
     }
     Shape {
         anchors.fill: parent
-        preferredRendererType: Shape.CurveRenderer
         visible: root.name === "arrowUp" || root.name === "arrowDown"
         rotation: root.name === "arrowDown" ? 180 : 0
         Stroke { PathMove { x: 5; y: 0.5 } PathLine { x: 5; y: 9.5 } }
@@ -82,7 +77,6 @@ Item {
     }
     Shape {
         anchors.fill: parent
-        preferredRendererType: Shape.CurveRenderer
         visible: root.name === "menu"
         Stroke { PathMove { x: 0; y: 1.5 } PathLine { x: 10; y: 1.5 } }
         Stroke { PathMove { x: 0; y: 5.5 } PathLine { x: 10; y: 5.5 } }
@@ -91,7 +85,6 @@ Item {
     Shape {
         anchors.fill: parent
         visible: root.name === "chevronDown"
-        preferredRendererType: Shape.CurveRenderer
         Stroke { PathMove { x: 0.2; y: 0.5 } PathLine { x: 4; y: 4.3 } PathLine { x: 7.8; y: 0.5 } }
     }
 }
