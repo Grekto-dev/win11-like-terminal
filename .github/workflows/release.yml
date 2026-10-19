@@ -35,6 +35,13 @@ jobs:
             libgl1-mesa-dev \
             libxcb1-dev \
             libxkbcommon-dev \
+            qml6-module-qtquick \
+            qml6-module-qtquick-window \
+            qml6-module-qtquick-controls \
+            qml6-module-qtquick-templates \
+            qml6-module-qtquick-shapes \
+            qml6-module-qtquick-layouts \
+            qml6-module-qtqml-workerscript \
             dpkg-dev \
             file
 
@@ -47,6 +54,10 @@ jobs:
       - name: Build
         run: |
           cmake --build build
+
+      - name: Run Tests
+        run: |
+          ctest --test-dir build --output-on-failure
 
       - name: Package .deb with CPack
         run: |
@@ -61,8 +72,10 @@ jobs:
           path: build/*.deb
 
       - name: Create GitHub Release
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'v0.9.0' }}
+          name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'v0.9.0' }}
           files: build/*.deb
           generate_release_notes: true

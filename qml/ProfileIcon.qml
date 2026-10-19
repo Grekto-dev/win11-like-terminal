@@ -1,8 +1,7 @@
 import QtQuick
-import QtQuick.Shapes
+import Win11Terminal
 
-// The icon of a profile. Windows Terminal has a picture per shell; until the
-// Fluent set has one, a shell gets the console window: a rounded box with ">_".
+// The icon of a profile: bash, sh, dash or a console window.
 Item {
     id: root
     property string profileId
@@ -10,26 +9,22 @@ Item {
     implicitWidth: 16
     implicitHeight: 16
 
-    Rectangle {
-        anchors.fill: parent
-        anchors.margins: 0.5
-        radius: 2
-        color: "transparent"
-        border.width: 1
-        border.color: root.color
+    readonly property var profile: ProfileManager.profile(profileId)
+    readonly property string iconName: {
+        if (!profile || !profile.name) return "window_console"
+        const n = profile.name.toLowerCase()
+        if (n.indexOf("bash") >= 0) return "bash"
+        if (n === "sh") return "sh"
+        if (n.indexOf("dash") >= 0) return "dash"
+        if (profile.icon && profile.icon.length > 0 && profile.icon !== "terminal") return profile.icon
+        return "window_console"
     }
-    Shape {
-        anchors.fill: parent
-        ShapePath {
-            strokeColor: root.color; strokeWidth: 1; fillColor: "transparent"
-            PathMove { x: 3.5; y: 5.5 }
-            PathLine { x: 6.5; y: 8 }
-            PathLine { x: 3.5; y: 10.5 }
-        }
-        ShapePath {
-            strokeColor: root.color; strokeWidth: 1; fillColor: "transparent"
-            PathMove { x: 8; y: 11.5 }
-            PathLine { x: 12; y: 11.5 }
-        }
+
+    FluentSymbol {
+        anchors.centerIn: parent
+        name: root.iconName
+        size: Math.min(root.width, root.height)
+        variant: "regular"
+        color: root.color
     }
 }

@@ -24,6 +24,8 @@
     <file alias="apps_list_detail_32_color.svg">fluent/apps_list_detail_32_color.svg</file>
     <file alias="apps_list_detail_32_filled.svg">fluent/apps_list_detail_32_filled.svg</file>
     <file alias="apps_list_detail_32_regular.svg">fluent/apps_list_detail_32_regular.svg</file>
+    <file alias="bash_16_regular.svg">fluent/bash_16_regular.svg</file>
+    <file alias="bash_20_regular.svg">fluent/bash_20_regular.svg</file>
     <file alias="arrow_down_12_filled.svg">fluent/arrow_down_12_filled.svg</file>
     <file alias="arrow_down_12_regular.svg">fluent/arrow_down_12_regular.svg</file>
     <file alias="arrow_down_16_filled.svg">fluent/arrow_down_16_filled.svg</file>
@@ -142,6 +144,8 @@
     <file alias="cursor_32_filled.svg">fluent/cursor_32_filled.svg</file>
     <file alias="cursor_32_light.svg">fluent/cursor_32_light.svg</file>
     <file alias="cursor_32_regular.svg">fluent/cursor_32_regular.svg</file>
+    <file alias="dash_16_regular.svg">fluent/dash_16_regular.svg</file>
+    <file alias="dash_20_regular.svg">fluent/dash_20_regular.svg</file>
     <file alias="delete_12_filled.svg">fluent/delete_12_filled.svg</file>
     <file alias="delete_12_regular.svg">fluent/delete_12_regular.svg</file>
     <file alias="delete_16_filled.svg">fluent/delete_16_filled.svg</file>
@@ -382,6 +386,8 @@
     <file alias="search_32_regular.svg">fluent/search_32_regular.svg</file>
     <file alias="search_48_filled.svg">fluent/search_48_filled.svg</file>
     <file alias="search_48_regular.svg">fluent/search_48_regular.svg</file>
+    <file alias="sh_16_regular.svg">fluent/sh_16_regular.svg</file>
+    <file alias="sh_20_regular.svg">fluent/sh_20_regular.svg</file>
     <file alias="settings_16_color.svg">fluent/settings_16_color.svg</file>
     <file alias="settings_16_filled.svg">fluent/settings_16_filled.svg</file>
     <file alias="settings_16_regular.svg">fluent/settings_16_regular.svg</file>

@@ -187,7 +187,15 @@ void ProfileManager::detect()
         p[QStringLiteral("commandline")] = path;
         p[QStringLiteral("program")] = path;
         p[QStringLiteral("arguments")] = QStringList();
-        p[QStringLiteral("icon")] = QStringLiteral("terminal");
+        if (base == QLatin1String("bash")) {
+            p[QStringLiteral("icon")] = QStringLiteral("bash");
+        } else if (base == QLatin1String("sh")) {
+            p[QStringLiteral("icon")] = QStringLiteral("sh");
+        } else if (base == QLatin1String("dash")) {
+            p[QStringLiteral("icon")] = QStringLiteral("dash");
+        } else {
+            p[QStringLiteral("icon")] = QStringLiteral("window_console");
+        }
         p[QStringLiteral("hidden")] = false;
         m_generated << p;
     }
@@ -198,7 +206,7 @@ void ProfileManager::detect()
         p[QStringLiteral("commandline")] = QStringLiteral("/bin/sh");
         p[QStringLiteral("program")] = QStringLiteral("/bin/sh");
         p[QStringLiteral("arguments")] = QStringList();
-        p[QStringLiteral("icon")] = QStringLiteral("terminal");
+        p[QStringLiteral("icon")] = QStringLiteral("sh");
         p[QStringLiteral("hidden")] = false;
         m_generated << p;
     }

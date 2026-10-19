@@ -47,6 +47,15 @@ Rectangle {
     function profileChoices() {
         return ProfileManager.profiles.map(function(p) { return { v: p.guid, l: p.name } })
     }
+    function profileNavIcon(p) {
+        if (!p) return "window_console"
+        const name = (p.name || "").toLowerCase()
+        if (name.indexOf("bash") >= 0) return "bash"
+        if (name === "sh") return "sh"
+        if (name.indexOf("dash") >= 0) return "dash"
+        if (p.icon && p.icon.length > 0 && p.icon !== "terminal") return p.icon
+        return "window_console"
+    }
     function profileRows(scope, isDefaults) {
         const rows = []
         if (isDefaults) rows.push({ type: "info", text: qsTr("The settings defined here will be applied to all profiles unless a profile's own settings override them.") })
@@ -286,7 +295,7 @@ Rectangle {
             NavItem { pageId: "defaults"; label: qsTr("Defaults"); icon: "layer" }
             Repeater {
                 model: ProfileManager.profiles
-                NavItem { required property var modelData; pageId: "profile:" + modelData.guid; label: modelData.name; icon: "" }
+                NavItem { required property var modelData; pageId: "profile:" + modelData.guid; label: modelData.name; icon: root.profileNavIcon(modelData) }
             }
             NavItem { pageId: "add"; label: qsTr("Add a new profile"); icon: "add" }
         }
