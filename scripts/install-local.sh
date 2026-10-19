@@ -13,10 +13,13 @@ sudo apt-get install -y \
   qt6-base-dev \
   qt6-declarative-dev \
   qt6-shadertools-dev \
+  qt6-tools-dev \
+  qt6-l10n-tools \
   libqt6svg6-dev \
   libvterm-dev \
   libgl1-mesa-dev \
   libxcb1-dev \
+  libxkbcommon-dev \
   zenity
 
 echo "=== Compilando o programa ==="

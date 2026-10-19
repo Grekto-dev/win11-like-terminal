@@ -50,13 +50,15 @@ sudo apt install -y \
     ninja-build \
     qt6-base-dev \
     qt6-declarative-dev \
-    libqt6shadertools6-dev \
-    libqt6svg6-dev \
+    qt6-shadertools-dev \
+    qt6-tools-dev \
     qt6-l10n-tools \
+    libqt6svg6-dev \
+    libvterm-dev \
+    libgl1-mesa-dev \
     libxcb1-dev \
-    libxcb-render0-dev \
-    libxcb-shape0-dev \
-    libxcb-xfixes0-dev
+    libxkbcommon-dev \
+    zenity
 ```
 
 #### Fedora:
