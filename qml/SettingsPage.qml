@@ -34,11 +34,10 @@ Rectangle {
             { id: "interaction", label: qsTr("Interaction"), icon: "cursor" },
             { id: "appearance", label: qsTr("Appearance"), icon: "paint_brush" },
             { id: "colors", label: qsTr("Color schemes"), icon: "color" },
-            { id: "rendering", label: qsTr("Rendering"), icon: "laptop" },
             { id: "compat", label: qsTr("Compatibility"), icon: "wrench" },
             { id: "actions", label: qsTr("Actions"), icon: "keyboard" },
             { id: "newtab", label: qsTr("New tab menu"), icon: "apps_list_detail" },
-            { id: "extensions", label: qsTr("Extensions"), icon: "puzzle_piece", badge: qsTr("NEW") }
+            { id: "about", label: qsTr("About"), icon: "question" }
         ]
     }
     function schemeChoices() {
@@ -84,7 +83,7 @@ Rectangle {
             { type: "fontFeatures", scope: scope, key: "fontFeatures", title: qsTr("Font features"), desc: qsTr("Add or remove font features for the given font.") },
             { type: "toggle", scope: scope, key: "builtinGlyphs", def: true, title: qsTr("Builtin Glyphs"), desc: qsTr("When enabled, the terminal draws custom glyphs for block element and box drawing characters instead of using the font.") },
             { type: "toggle", scope: scope, key: "useColorEmoji", def: true, title: qsTr("Full-color Emoji"), desc: qsTr("When enabled, Emoji are displayed in full color.") },
-            { type: "toggle", scope: scope, key: "experimental.retroTerminalEffect", disabled: true, title: qsTr("Retro terminal effects"), desc: qsTr("Show \"retro\" terminal effects such as glowing text and scan lines.") },
+            { type: "toggle", scope: scope, key: "experimental.retroTerminalEffect", title: qsTr("Retro terminal effects"), desc: qsTr("Show \"retro\" terminal effects such as glowing text and scan lines.") },
             { type: "choice", scope: scope, key: "adjustIndistinguishableColors", def: "indexed", title: qsTr("Automatically adjust lightness of indistinguishable text"),
               desc: qsTr("Automatically brightens or darkens text to make it more visible. Even when enabled, this adjustment will only occur when a combination of foreground and background colors would result in poor contrast."), options: [
                 { v: "never", l: qsTr("Never") }, { v: "indexed", l: qsTr("Only for colors in the color scheme") }, { v: "always", l: qsTr("Always") }] },
@@ -94,7 +93,13 @@ Rectangle {
                 { v: "doubleUnderscore", l: qsTr("Double underscore ( ‗ )") }, { v: "filledBox", l: qsTr("Filled box ( █ )") }, { v: "emptyBox", l: qsTr("Empty box ( ▯ )") }] },
             { type: "cursorColor", scope: scope, title: qsTr("Cursor color"), desc: qsTr("Overrides the cursor color from the color scheme.") },
             { type: "section", text: qsTr("Background image") },
-            { type: "field", scope: scope, key: "backgroundImage", disabled: true, title: qsTr("Background image path"), desc: qsTr("File location of the image used in the background of the window."), width: 248 },
+            { type: "backgroundImage", scope: scope, title: qsTr("Background image path"), desc: qsTr("File location of the image used in the background of the window.") },
+            { type: "slider", scope: scope, key: "backgroundImageOpacity", title: qsTr("Background image opacity"), desc: qsTr("Sets the transparency of the background image."), min: 0, max: 100, def: 50 },
+            { type: "choice", scope: scope, key: "backgroundImageStretchMode", def: "uniformToFill", title: qsTr("Background image stretch mode"), desc: qsTr("Defines how the background image is resized to fill the window."), options: [
+                { v: "uniformToFill", l: qsTr("Uniform to fill") },
+                { v: "uniform", l: qsTr("Uniform") },
+                { v: "fill", l: qsTr("Fill") },
+                { v: "none", l: qsTr("None") }] },
             { type: "section", text: qsTr("Text Formatting") },
             { type: "choice", scope: scope, key: "intenseTextStyle", def: "bright", title: qsTr("Intense text style"), options: [
                 { v: "none", l: qsTr("None") }, { v: "bold", l: qsTr("Bold font") }, { v: "bright", l: qsTr("Bright colors") }, { v: "all", l: qsTr("Bold font with bright colors") }] },
@@ -119,28 +124,15 @@ Rectangle {
     // Advanced, measured on the VM : the VM page has no section headings.
     function advancedRows(scope) {
         return [
-            { type: "choice", scope: scope, key: "antialiasingMode", disabled: true, def: "grayscale", title: qsTr("Text antialiasing"), desc: qsTr("Controls how text is antialiased in the renderer."), options: [
-                { v: "grayscale", l: qsTr("Grayscale") }, { v: "cleartype", l: qsTr("ClearType") }, { v: "aliased", l: qsTr("Aliased") }] },
-            { type: "toggle", scope: scope, key: "altGrAliasing", disabled: true, def: true, title: qsTr("AltGr aliasing"), desc: qsTr("By default, Ctrl+Alt is treated as an alias for AltGr. This setting overrides the default behavior.") },
             { type: "toggle", scope: scope, key: "snapOnInput", title: qsTr("Scroll to input when typing"), def: true },
             { type: "number", scope: scope, key: "historySize", title: qsTr("History size"), desc: qsTr("The number of lines above the ones displayed in the window you can scroll back to."), min: 0, max: 999999, def: 9001 },
             { type: "choice", scope: scope, key: "closeOnExit", title: qsTr("Profile termination behavior"), def: "automatic", options: [
                 { v: "automatic", l: qsTr("Automatic") }, { v: "always", l: qsTr("Close when process exits, fails, or crashes") },
                 { v: "graceful", l: qsTr("Close only when process exits successfully") }, { v: "never", l: qsTr("Never close automatically") }] },
             { type: "bell", scope: scope, title: qsTr("Bell notification style"), desc: qsTr("Controls what happens when the application emits a BEL character.") },
-            { type: "expander", scope: scope, disabled: true, title: qsTr("Bell sound"), desc: qsTr("Controls what sound is played when the application emits a BEL character. \"Bell notification style\" must include \"Audible\"."), value: qsTr("Default system sound") },
+            { type: "bellSound", scope: scope, title: qsTr("Bell sound"), desc: qsTr("Controls what sound is played when the application emits a BEL character. \"Bell notification style\" must include \"Audible\".") },
             { type: "toggle", scope: "g", key: "experimental.rightClickContextMenu", def: true, title: qsTr("Display a menu on right-click"),
-              desc: qsTr("When enabled, the Terminal will display a menu on right-click. When disabled, right-clicking will copy the selected text (or paste if there's no selection).") },
-            { type: "toggle", scope: scope, key: "showMarksOnScrollBar", disabled: true, title: qsTr("Display marks on the scrollbar"), desc: qsTr("When enabled, the Terminal will display marks on the scrollbar when searching for text or when shell integration is enabled.") },
-            { type: "toggle", scope: scope, key: "autoMarkPrompts", disabled: true, def: true, title: qsTr("Automatically mark prompts on pressing Enter"), desc: qsTr("When enabled, the Terminal automatically add a mark indicating the position of the end of the command when you press enter.") },
-            { type: "toggle", scope: scope, key: "compatibility.reloadEnvironmentVariables", disabled: true, def: true, title: qsTr("Launch this application with a new environment block"),
-              desc: qsTr("When enabled, the Terminal will generate a new environment block when creating new tabs or panes with this profile. When disabled, the tab/pane will instead inherit the variables the Terminal was started with.") },
-            { type: "toggle", scope: scope, key: "experimental.repositionCursorWithMouse", disabled: true, title: qsTr("Experimental: Reposition the cursor with mouse clicks"),
-              desc: qsTr("When enabled, clicking inside the prompt will move the cursor to that position. This requires shell integration to be enabled in your shell to work as expected.") },
-            { type: "toggle", scope: scope, key: "experimental.rainbowSuggestions", disabled: true, title: qsTr("Experimental: Display suggested input in rainbow colors") },
-            { type: "choice", scope: scope, key: "pathTranslationStyle", disabled: true, def: "none", title: qsTr("Path translation"), desc: qsTr("Controls how file and directory paths are translated during drag and drop operations."), options: [
-                { v: "none", l: qsTr("None") }, { v: "wsl", l: "WSL (C:\\ → /mnt/c)" }, { v: "cygwin", l: "Cygwin (C:\\ → /cygdrive/c)" },
-                { v: "msys2", l: "MSYS2 (C:\\ → /c)" }, { v: "mingw", l: "MinGW (C:\\ → C:/)" }] }
+              desc: qsTr("When enabled, the Terminal will display a menu on right-click. When disabled, right-clicking will copy the selected text (or paste if there's no selection).") }
         ]
     }
     function schemeRows(name) {
@@ -180,26 +172,11 @@ Rectangle {
             { type: "toggle", scope: "g", key: "alwaysOnTop", title: qsTr("Always on top"), desc: qsTr("Terminal will always be the topmost window on the desktop.") },
             { type: "choice", scope: "g", key: "tabWidthMode", title: qsTr("Tab width mode"), desc: qsTr("Compact will shrink inactive tabs to the size of the icon."),
               options: [{ v: "equal", l: qsTr("Equal") }, { v: "titleLength", l: qsTr("Title length") }, { v: "compact", l: qsTr("Compact") }], def: "equal" } ]
-        // Rendering: shown as the original has it, switched off (SEM-EQUIVALENTE.md B-14, A-46, A-47).
-        case "rendering": return [
-            { type: "choice", scope: "g", key: "rendering.graphicsAPI", disabled: true, def: "automatic", title: qsTr("Graphics API"),
-              desc: qsTr("Direct3D 11 provides a more performant and feature-rich experience, whereas Direct2D is more stable. The default option \"Automatic\" will pick the API that best fits your graphics hardware. If you experience significant issues, consider using Direct2D."),
-              options: [{ v: "automatic", l: qsTr("Automatic") }, { v: "direct2d", l: qsTr("Direct2D") }, { v: "direct3d11", l: qsTr("Direct3D 11") }] },
-            { type: "toggle", scope: "g", key: "rendering.disablePartialInvalidation", disabled: true, title: qsTr("Disable partial Swap Chain invalidation"),
-              desc: qsTr("By default, the text renderer uses a FLIP_SEQUENTIAL Swap Chain and declares dirty rectangles via the Present1 API. When this setting is enabled, a FLIP_DISCARD Swap Chain will be used instead, and no dirty rectangles will be declared. Whether one or the other is better depends on your hardware and various other factors.") },
-            { type: "toggle", scope: "g", key: "rendering.software", disabled: true, title: qsTr("Use software rendering (WARP)"),
-              desc: qsTr("When enabled, the terminal will use a software rasterizer (WARP). This setting should be left disabled under almost all circumstances.") } ]
-        // Compatibility: the background mode and the measuring modes have no equivalent here (C-12, B-25).
         case "compat": return [
-            { type: "toggle", scope: "g", key: "compatibility.allowHeadless", disabled: true, title: qsTr("Allow the terminal to run in the background"),
-              desc: qsTr("This allows actions such as Global Summon and Quake Mode actions to work even when no windows are open.") },
-            { type: "choice", scope: "g", key: "compatibility.textMeasurement", disabled: true, def: "wcswidth", title: qsTr("Text measurement mode"),
-              desc: qsTr("This changes how incoming text is grouped into cells. \"Grapheme clusters\" is the most modern and Unicode-correct option, while \"wcswidth\" is a common approach on UNIX and \"Legacy console\" reproduces the older console behavior. Restart the terminal to apply this setting to newly launched applications."),
-              options: [{ v: "graphemeCluster", l: qsTr("Grapheme clusters") }, { v: "wcswidth", l: qsTr("wcswidth") }, { v: "console", l: qsTr("Legacy console") }] },
             { type: "danger", title: qsTr("Clear cache"), desc: qsTr("The cache stores data related to saved sessions and automatically generated profiles."), button: qsTr("Clear"), action: "clearCache" },
             { type: "danger", title: qsTr("Reset to default settings"), button: qsTr("Restore"), action: "reset" } ]
         case "newtab": return [ { type: "info", text: qsTr("The new tab menu lists the profiles; it is edited in settings.json (newTabMenu).") } ]
-        case "extensions": return [ { type: "info", text: qsTr("Extensions are not available in this terminal.") } ]
+        case "about": return [ { type: "about" } ]
         case "defaults": return profileRows("d", true)
         case "defaults:appearance": return appearanceRows("d")
         case "defaults:emulation": return emulationRows("d")
@@ -376,6 +353,9 @@ Rectangle {
                         opacity: modelData.disabled === true ? 0.45 : 1
                         sourceComponent: modelData.type === "toggle" ? toggleRow : modelData.type === "choice" ? choiceRow
                             : modelData.type === "language" ? languageRow
+                            : modelData.type === "backgroundImage" ? backgroundImageRow
+                            : modelData.type === "bellSound" ? bellSoundRow
+                            : modelData.type === "about" ? aboutRow
                             : modelData.type === "field" ? fieldRow : modelData.type === "number" ? numberRow
                             : modelData.type === "size" ? sizeRow : modelData.type === "section" ? sectionRow
                             : modelData.type === "preview" ? previewRow : modelData.type === "decimal" ? decimalRow
@@ -807,6 +787,110 @@ Rectangle {
                 onChosen: function(v) {
                     LanguageManager.setLanguage(v)
                 }
+            }
+        } }
+    Component { id: backgroundImageRow
+        SettingCard {
+            title: modelData.title; description: modelData.desc || ""
+            readonly property string currentPath: String(store.get(modelData.scope, "backgroundImage", ""))
+            Row {
+                spacing: 8
+                FieldBox {
+                    id: bgPathBox
+                    boxWidth: 260
+                    text: currentPath
+                    placeholder: qsTr("Image path...")
+                    onEdited: function(t) { store.set(modelData.scope, "backgroundImage", t.trim()) }
+                }
+                Rectangle {
+                    width: browseText.width + 24; height: 32; radius: 4; color: Theme.accentLight
+                    Text { id: browseText; anchors.centerIn: parent; text: qsTr("Browse..."); color: Theme.accentText; font.family: Theme.fontFamily; font.pixelSize: 13 }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            const chosen = Launcher.chooseFile(qsTr("Select Background Image"), "Images (*.png *.jpg *.jpeg *.bmp *.webp *.svg) | *.png *.jpg *.jpeg *.bmp *.webp *.svg")
+                            if (chosen && chosen.length > 0) {
+                                store.set(modelData.scope, "backgroundImage", chosen)
+                            }
+                        }
+                    }
+                }
+                Rectangle {
+                    visible: currentPath.length > 0
+                    width: 32; height: 32; radius: 4; color: Theme.card; border.width: 1; border.color: Theme.cardBorder
+                    Text { anchors.centerIn: parent; text: "✕"; color: Theme.text; font.family: Theme.fontFamily; font.pixelSize: 13 }
+                    MouseArea { anchors.fill: parent; onClicked: store.set(modelData.scope, "backgroundImage", "") }
+                }
+            }
+        } }
+    Component { id: bellSoundRow
+        SettingCard {
+            title: modelData.title; description: modelData.desc || ""
+            readonly property string currentSound: String(store.get(modelData.scope, "bellSound", ""))
+            Row {
+                spacing: 8
+                FieldBox {
+                    id: soundBox
+                    boxWidth: 220
+                    text: currentSound
+                    placeholder: qsTr("Default system sound")
+                    onEdited: function(t) { store.set(modelData.scope, "bellSound", t.trim()) }
+                }
+                Rectangle {
+                    width: soundBrowseText.width + 24; height: 32; radius: 4; color: Theme.accentLight
+                    Text { id: soundBrowseText; anchors.centerIn: parent; text: qsTr("Browse..."); color: Theme.accentText; font.family: Theme.fontFamily; font.pixelSize: 13 }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            const chosen = Launcher.chooseFile(qsTr("Select Bell Sound"), "Audio Files (*.oga *.wav *.ogg *.mp3 *.flac) | *.oga *.wav *.ogg *.mp3 *.flac")
+                            if (chosen && chosen.length > 0) {
+                                store.set(modelData.scope, "bellSound", chosen)
+                            }
+                        }
+                    }
+                }
+                Rectangle {
+                    width: soundTestText.width + 24; height: 32; radius: 4; color: Theme.card; border.width: 1; border.color: Theme.cardBorder
+                    Text { id: soundTestText; anchors.centerIn: parent; text: qsTr("Test"); color: Theme.text; font.family: Theme.fontFamily; font.pixelSize: 13 }
+                    MouseArea { anchors.fill: parent; onClicked: Launcher.playBell(currentSound) }
+                }
+                Rectangle {
+                    visible: currentSound.length > 0
+                    width: 32; height: 32; radius: 4; color: Theme.card; border.width: 1; border.color: Theme.cardBorder
+                    Text { anchors.centerIn: parent; text: "✕"; color: Theme.text; font.family: Theme.fontFamily; font.pixelSize: 13 }
+                    MouseArea { anchors.fill: parent; onClicked: store.set(modelData.scope, "bellSound", "") }
+                }
+            }
+        } }
+    Component { id: aboutRow
+        Column {
+            width: body.width
+            spacing: 12
+            SettingCard {
+                title: qsTr("Win11-Like Terminal for Linux")
+                description: qsTr("A standalone, modern Windows 11-style terminal emulator built for Linux Mint and other distributions.")
+                Row {
+                    spacing: 8
+                    Rectangle {
+                        width: verText.width + 20; height: 28; radius: 14; color: Theme.accentLight
+                        Text { id: verText; anchors.centerIn: parent; text: "v0.9.0"; color: Theme.accentText; font.family: Theme.fontFamily; font.pixelSize: 13; font.bold: true }
+                    }
+                }
+            }
+            SettingCard {
+                title: qsTr("Version and Environment")
+                description: qsTr("Application version: %1\nQt Runtime: %2\nPlatform: Linux (%3)").arg("0.9.0").arg(Qt.version).arg(Qt.platform.os)
+            }
+            SettingCard {
+                title: qsTr("Source Code & Repository")
+                description: "https://github.com/Grekto-dev/win11-like-terminal"
+                clickable: true
+                onClicked: Launcher.openUrl("https://github.com/Grekto-dev/win11-like-terminal")
+                Glyph { name: "chevronDown"; rotation: -90; color: Theme.text }
+            }
+            SettingCard {
+                title: qsTr("License")
+                description: qsTr("Open source under the MIT License. Includes Cascadia Mono (SIL OFL), libvterm (MIT), and Fluent UI System Icons (MIT).")
             }
         } }
     Component { id: fieldRow

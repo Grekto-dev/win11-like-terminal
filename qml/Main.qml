@@ -82,7 +82,7 @@ ApplicationWindow {
         page.host = win
         // Through `page.host`, so the page can move to another window and keep these connections.
         page.closeRequested.connect(function() { const w = page.host; const i = w.pageList.indexOf(page); if (i >= 0) w.closeTab(i) })
-        page.bell.connect(function(style) { page.host.ring(style) })
+        page.bell.connect(function(style, sound) { page.host.ring(style, sound) })
         page.titleChanged.connect(function() { page.host.refreshTitles() })
         pageList = pageList.concat([page])
         tabs.append({ title: page.title, profileId: id, kind: "terminal", tabColor: "", custom: "" })
@@ -212,10 +212,10 @@ ApplicationWindow {
         tabMenu.open()
     }
     // bellStyle: "audible" (the default), "window", "taskbar", "all", "none"; or a list of those.
-    function ring(style) {
+    function ring(style, sound) {
         const list = style === undefined || style === "" ? ["audible"] : (typeof style === "string" ? [style] : style)
         const all = list.indexOf("all") >= 0
-        if (all || list.indexOf("audible") >= 0) Launcher.playBell()
+        if (all || list.indexOf("audible") >= 0) Launcher.playBell(sound || "")
         if ((all || list.indexOf("window") >= 0 || list.indexOf("taskbar") >= 0) && !active) alert(0)
     }
     function toggleMaximized() {

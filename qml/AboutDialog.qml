@@ -34,15 +34,23 @@ Item {
         Column {
             x: 24; y: 66
             spacing: 0
-            Text { text: qsTr("Terminal"); color: Theme.text; font.family: Theme.fontFamily; font.pixelSize: 12 }
-            Text { text: qsTr("Version: %1").arg(root.version); color: Theme.text; font.family: Theme.fontFamily; font.pixelSize: 12 }
+            Text { text: "Win11-Like Terminal"; color: Theme.text; font.family: Theme.fontFamily; font.pixelSize: 13; font.bold: true }
+            Text { text: qsTr("Version: %1").arg(root.version); color: Theme.textSecondary; font.family: Theme.fontFamily; font.pixelSize: 12 }
         }
         Column {
-            x: 24; y: 154
+            x: 24; y: 140
             spacing: 14
-            Repeater {
-                model: [qsTr("Source code"), qsTr("Documentation"), qsTr("Release notes"), qsTr("Privacy policy"), qsTr("Third-Party notices")]
-                Text { required property string modelData; text: modelData; color: Theme.accentLight; font.family: Theme.fontFamily; font.pixelSize: 12 }
+            Text { text: qsTr("Source code"); color: Theme.accentLight; font.family: Theme.fontFamily; font.pixelSize: 12
+                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: Launcher.openUrl("https://github.com/Grekto-dev/win11-like-terminal") }
+            }
+            Text { text: qsTr("Documentation"); color: Theme.accentLight; font.family: Theme.fontFamily; font.pixelSize: 12
+                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: Launcher.openUrl("https://github.com/Grekto-dev/win11-like-terminal#readme") }
+            }
+            Text { text: qsTr("Release notes"); color: Theme.accentLight; font.family: Theme.fontFamily; font.pixelSize: 12
+                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: Launcher.openUrl("https://github.com/Grekto-dev/win11-like-terminal/releases") }
+            }
+            Text { text: qsTr("License (MIT)"); color: Theme.accentLight; font.family: Theme.fontFamily; font.pixelSize: 12
+                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: Launcher.openUrl("https://github.com/Grekto-dev/win11-like-terminal/blob/main/LICENSE") }
             }
         }
         Rectangle {   // the footer
@@ -55,6 +63,7 @@ Item {
                 Rectangle {
                     width: 142; height: 32; radius: 4; color: Theme.dialogButton
                     Text { anchors.centerIn: parent; text: qsTr("Send feedback"); color: Theme.text; font.family: Theme.fontFamily; font.pixelSize: 14 }
+                    MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: Launcher.openUrl("https://github.com/Grekto-dev/win11-like-terminal/issues") }
                 }
                 Rectangle {
                     id: ok

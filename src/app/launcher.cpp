@@ -61,9 +61,46 @@ void Launcher::clearCache()
     }
 }
 
-void Launcher::playBell()
+QString Launcher::chooseFile(const QString &title, const QString &filter)
 {
-    static const QString sound = QStringLiteral("/usr/share/sounds/freedesktop/stereo/bell.oga");
+    const QString zenity = QStandardPaths::findExecutable(QStringLiteral("zenity"));
+    if (!zenity.isEmpty()) {
+        QStringList args = {QStringLiteral("--file-selection")};
+        if (!title.isEmpty()) {
+            args << QStringLiteral("--title=") + title;
+        }
+        if (!filter.isEmpty()) {
+            args << QStringLiteral("--file-filter=") + filter;
+        }
+        QProcess proc;
+        proc.start(zenity, args);
+        if (proc.waitForFinished(-1) && proc.exitCode() == 0) {
+            return QString::fromUtf8(proc.readAllStandardOutput()).trimmed();
+        }
+        return QString();
+    }
+    const QString kdialog = QStandardPaths::findExecutable(QStringLiteral("kdialog"));
+    if (!kdialog.isEmpty()) {
+        QStringList args = {QStringLiteral("--getopenfilename"), QDir::homePath()};
+        if (!title.isEmpty()) {
+            args << QStringLiteral("--title") << title;
+        }
+        QProcess proc;
+        proc.start(kdialog, args);
+        if (proc.waitForFinished(-1) && proc.exitCode() == 0) {
+            return QString::fromUtf8(proc.readAllStandardOutput()).trimmed();
+        }
+        return QString();
+    }
+    return QString();
+}
+
+void Launcher::playBell(const QString &soundPath)
+{
+    QString sound = soundPath;
+    if (sound.isEmpty() || !QFileInfo::exists(sound)) {
+        sound = QStringLiteral("/usr/share/sounds/freedesktop/stereo/bell.oga");
+    }
     if (m_bellPlayer && m_bellPlayer->state() != QProcess::NotRunning) {
         return;
     }

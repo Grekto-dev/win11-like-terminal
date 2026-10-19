@@ -1841,6 +1841,78 @@
         <source>Discard changes</source>
         <translation>Descartar alterações</translation>
     </message>
+    <message>
+        <source>Browse...</source>
+        <translation>Procurar...</translation>
+    </message>
+    <message>
+        <source>Test</source>
+        <translation>Testar</translation>
+    </message>
+    <message>
+        <source>Image path...</source>
+        <translation>Caminho da imagem...</translation>
+    </message>
+    <message>
+        <source>Background image stretch mode</source>
+        <translation>Modo de ajuste da imagem de fundo</translation>
+    </message>
+    <message>
+        <source>Defines how the background image is resized to fill the window.</source>
+        <translation>Define como a imagem de fundo é redimensionada para preencher a janela.</translation>
+    </message>
+    <message>
+        <source>Uniform to fill</source>
+        <translation>Uniforme para preencher</translation>
+    </message>
+    <message>
+        <source>Uniform</source>
+        <translation>Uniforme</translation>
+    </message>
+    <message>
+        <source>Fill</source>
+        <translation>Preencher</translation>
+    </message>
+    <message>
+        <source>Select Background Image</source>
+        <translation>Selecionar Imagem de Fundo</translation>
+    </message>
+    <message>
+        <source>Select Bell Sound</source>
+        <translation>Selecionar Som da Campainha</translation>
+    </message>
+    <message>
+        <source>Win11-Like Terminal for Linux</source>
+        <translation>Win11-Like Terminal para Linux</translation>
+    </message>
+    <message>
+        <source>A standalone, modern Windows 11-style terminal emulator built for Linux Mint and other distributions.</source>
+        <translation>Um emulador de terminal moderno no estilo Windows 11 desenvolvido para Linux Mint e outras distribuições.</translation>
+    </message>
+    <message>
+        <source>Version and Environment</source>
+        <translation>Versão e Ambiente</translation>
+    </message>
+    <message>
+        <source>Application version: %1
+Qt Runtime: %2
+Platform: Linux (%3)</source>
+        <translation>Versão do aplicativo: %1
+Ambiente Qt: %2
+Plataforma: Linux (%3)</translation>
+    </message>
+    <message>
+        <source>Source Code &amp; Repository</source>
+        <translation>Código-Fonte &amp; Repositório</translation>
+    </message>
+    <message>
+        <source>License</source>
+        <translation>Licença</translation>
+    </message>
+    <message>
+        <source>Open source under the MIT License. Includes Cascadia Mono (SIL OFL), libvterm (MIT), and Fluent UI System Icons (MIT).</source>
+        <translation>Código aberto sob a licença MIT. Inclui Cascadia Mono (SIL OFL), libvterm (MIT) e Fluent UI System Icons (MIT).</translation>
+    </message>
 </context>
 <context>
     <name>TabColorFlyout</name>

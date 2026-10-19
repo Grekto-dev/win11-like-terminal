@@ -21,7 +21,7 @@ Item {
     readonly property bool acrylic: activeLeaf ? activeLeaf.acrylic : false
     readonly property color background: activeLeaf ? activeLeaf.background : "#0c0c0c"
     signal closeRequested             // the last pane is gone: the tab goes
-    signal bell(var style)
+    signal bell(var style, string sound)
 
     visible: current
 
@@ -49,7 +49,7 @@ Item {
         leaf.activated.connect(function() { setActive(leaf) })
         leaf.finished.connect(function(code, close) { if (close) closeLeaf(leaf) })
         leaf.closeRequested.connect(function() { closeLeaf(leaf) })
-        leaf.bell.connect(function() { root.bell(leaf.profile.bellStyle) })
+        leaf.bell.connect(function(style, sound) { root.bell(style, sound) })
         return leaf
     }
 

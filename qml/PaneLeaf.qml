@@ -50,7 +50,7 @@ Item {
     signal activated
     signal finished(int exitCode, bool close)
     signal closeRequested
-    signal bell
+    signal bell(var style, string sound)
 
     function focusTerminal() { view.forceActiveFocus() }
     onSchemeChanged: view.setColorScheme(scheme)
@@ -66,8 +66,36 @@ Item {
         closeOnExit: root.profile.closeOnExit || "automatic"
         onFinished: function(code, close) { root.finished(code, close) }
         onCloseRequested: root.closeRequested()
-        onBell: root.bell()
+        onBell: root.bell(root.profile.bellStyle, root.profile.bellSound || "")
     }
+
+    Rectangle {
+        anchors.fill: parent
+        color: root.scheme.background || "#0c0c0c"
+        opacity: root.opacityValue
+    }
+
+    Image {
+        id: bgImage
+        anchors.fill: parent
+        visible: !!root.profile.backgroundImage
+        source: {
+            if (!root.profile.backgroundImage) return ""
+            const p = String(root.profile.backgroundImage).trim()
+            if (p.length === 0) return ""
+            return (p.indexOf(":/") === 0 || p.indexOf("file://") === 0) ? p : ("file://" + p)
+        }
+        opacity: root.profile.backgroundImageOpacity !== undefined ? (Math.max(0, Math.min(100, Number(root.profile.backgroundImageOpacity))) / 100) : 0.5
+        fillMode: {
+            const sm = root.profile.backgroundImageStretchMode
+            if (sm === "none") return Image.Pad
+            if (sm === "fill") return Image.Stretch
+            if (sm === "uniform") return Image.PreserveAspectFit
+            return Image.PreserveAspectCrop
+        }
+        clip: true
+    }
+
     TerminalView {
         id: view
         anchors.fill: parent
@@ -87,7 +115,7 @@ Item {
         copyOnSelect: AppSettings.globals.copyOnSelect === true
         wordDelimiters: AppSettings.globals.wordDelimiters
         snapToGrid: AppSettings.globals.snapToGridOnResize !== false
-        backgroundOpacity: Math.max(0, Math.min(100, (root.profile.opacity === undefined ? 100 : Number(root.profile.opacity)) + root.opacityDelta)) / 100
+        backgroundOpacity: root.profile.backgroundImage ? 0 : Math.max(0, Math.min(100, (root.profile.opacity === undefined ? 100 : Number(root.profile.opacity)) + root.opacityDelta)) / 100
         scrollToZoom: AppSettings.globals["experimental.scrollToZoom"] !== false
         scrollToChangeOpacity: AppSettings.globals["experimental.scrollToChangeOpacity"] !== false
         // Measured on the VM : 1pt a notch; the top is a hard 128pt, but below 1pt the notches keep
@@ -108,6 +136,10 @@ Item {
         onPasteConfirmationRequested: function(text, multiLine, large) { root.activated(); Actions.window.confirmPaste(view, text, multiLine, large) }
         onFindRequested: search.open()
         onContextMenuRequested: function(pos) { root.activated(); Actions.window.openContextMenu(root, pos, false) }
+    }
+
+    RetroEffect {
+        visible: root.profile["experimental.retroTerminalEffect"] === true
     }
     TerminalScrollBar {
         visible: root.profile.scrollbarState !== "hidden"

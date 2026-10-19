@@ -3,6 +3,7 @@
 A modern, high-fidelity Windows 11-style Terminal emulator for Linux Mint and other Linux distributions, built with Qt 6 and QML on top of a fast, custom-tuned terminal emulation core.
 
 ![Platform](https://img.shields.io/badge/Platform-Linux%20Mint%20%7C%20Ubuntu%20%7C%20Debian%20%7C%20Arch%20%7C%20Fedora-blue)
+![Version](https://img.shields.io/badge/Version-0.9.0-green)
 ![Qt](https://img.shields.io/badge/Qt-6.4+-brightgreen)
 ![License](https://img.shields.io/badge/License-GPL--3.0%20%2F%20MIT-blue)
 
@@ -12,11 +13,15 @@ A modern, high-fidelity Windows 11-style Terminal emulator for Linux Mint and ot
 
 - **📑 Windows 11 Tabbed Interface**: Integrated tab bar in the title area with fluent animations, tab coloring flyouts, tab renaming, drag-and-drop reordering, and duplicate/split actions.
 - **🪟 Split Panes**: Divide any tab horizontally or vertically (`Alt+Shift+Plus` / `Alt+Shift+Minus` / `Alt+Shift+D`). Resize interactively and navigate between panes with `Alt+Arrow Keys`.
+- **🖼️ Custom Background Images**: Set custom wallpaper images for any terminal profile with customizable opacity (slider) and stretch modes (`Uniform to fill`, `Uniform`, `Fill`, `None`) plus native file picker dialog.
+- **📺 Retro Terminal CRT Effects**: Authentic CRT monitor scanlines, screen glass curvature vignette, phosphor glow, and subtle ambient pulse.
+- **🔔 Customizable Bell Sound**: Pick custom audio files (`.oga`, `.wav`, `.ogg`, `.mp3`, `.flac`) or use system defaults with built-in instant preview sound test.
 - **🎨 Color Schemes & Visual Styles**: Bundled schemes (Campbell, Campbell PowerShell, Vintage, One Half Dark, One Half Light, Solarized, and Tango) plus an interactive **Color Scheme Editor** built into the Settings page.
 - **⚙️ Integrated Settings Tab**: Complete settings experience mirroring Windows Terminal:
   - Startup behaviors, default profile, and initial window size.
   - Interaction settings (copy on select, mouse wheel scrolling, paste warnings).
   - Appearance (font family, font size, cell spacing, line height, background opacity, and acrylic blur).
+  - Dedicated **About** page reporting version `0.9.0`, system environment, and repository links.
   - Profiles manager (auto-detects Bash, Zsh, Fish, PowerShell, and custom shells).
   - New tab menu customizer and command palette actions.
 - **🔍 Search & Command Palette**: Instant buffer search (`Ctrl+Shift+F`) with match highlighting and a fuzzy command palette (`Ctrl+Shift+P`) for quick actions.
@@ -82,9 +87,19 @@ sudo pacman -S --needed \
     libxcb
 ```
 
+### Quick Install (Linux Mint / Ubuntu / Debian)
+
+Run the included automated install script:
+```bash
+git clone https://github.com/Grekto-dev/win11-like-terminal.git
+cd win11-like-terminal
+./scripts/install-local.sh
+```
+This will automatically install build dependencies, build the release binary, install to `/usr/bin/win11terminal`, and register the desktop icon.
+
 ---
 
-### 2. Build from Source
+### Manual Build from Source
 
 ```bash
 # Clone the repository

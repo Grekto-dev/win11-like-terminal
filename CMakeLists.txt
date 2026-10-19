@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(win11terminal VERSION 0.1.0 LANGUAGES C CXX)
+project(win11terminal VERSION 0.9.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -80,6 +80,7 @@ if(NOT WIN11TERMINAL_CORE_ONLY)
           qml/PaneSplit.qml
           qml/SearchBox.qml
           qml/TerminalScrollBar.qml
+          qml/RetroEffect.qml
       SOURCES
           src/app/appsettings.h src/app/appsettings.cpp
           src/app/newtabmenu.h src/app/newtabmenu.cpp
@@ -138,3 +139,14 @@ endif()
 # --- Tests ---------------------------------------------------------------------
 enable_testing()
 add_subdirectory(tests)
+
+# --- Packaging (CPack for .deb) ------------------------------------------------
+set(CPACK_PACKAGE_NAME "win11-like-terminal")
+set(CPACK_PACKAGE_VENDOR "Grekto-dev")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Windows 11-Like Terminal for Linux")
+set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
+set(CPACK_GENERATOR "DEB")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Pedro <pedro@local>")
+set(CPACK_DEBIAN_PACKAGE_SECTION "utils")
+set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+include(CPack)

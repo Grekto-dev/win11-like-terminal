@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     app.setApplicationName(QStringLiteral("win11terminal"));
     app.setOrganizationName(QStringLiteral("pedro"));
     app.setDesktopFileName(QStringLiteral("org.pedro.win11terminal"));
-    app.setApplicationVersion(QStringLiteral("0.1.0"));
+    app.setApplicationVersion(QStringLiteral("0.9.0"));
     app.setWindowIcon(QIcon(QStringLiteral(":/data/icons/org.pedro.win11terminal.svg")));
 
     // The command line: options first, then `-e` or `--` and the program to run (the
