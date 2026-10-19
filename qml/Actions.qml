@@ -1,6 +1,5 @@
 pragma Singleton
 import QtQuick
-import Win11Terminal
 
 // The actions of Windows Terminal that a key or the command palette can run. The
 // ids are the original's (Terminal.OpenNewTab...), so settings.json keybindings

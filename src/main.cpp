@@ -4,6 +4,7 @@
 #include <QGuiApplication>
 #include <QIcon>
 #include <QLocale>
+#include <QLoggingCategory>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
 #include <QQuickWindow>
@@ -83,6 +84,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     LanguageManager::instance()->init(&engine);
+    engine.addImportPath(QStringLiteral("qrc:/"));
     engine.setInitialProperties({
         {QStringLiteral("program"), program},
         {QStringLiteral("arguments"), command},
