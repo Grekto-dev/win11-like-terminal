@@ -12,7 +12,9 @@ option(WIN11TERMINAL_CORE_ONLY "Build only the terminal core and its tests" OFF)
 
 find_package(Qt6 6.4 REQUIRED COMPONENTS Core Gui Qml Quick QuickControls2 ShaderTools LinguistTools Svg Test)
 qt_standard_project_setup(REQUIRES 6.4 I18N_SOURCE_LANGUAGE en I18N_TRANSLATED_LANGUAGES pt_BR)
-qt_policy(SET QTP0004 NEW)
+if(COMMAND qt_policy)
+    qt_policy(SET QTP0004 NEW)
+endif()
 
 # --- libvterm 0.3.3 (MIT, Paul Evans), vendored with patches ------------------------
 # third_party/libvterm is the upstream source plus optimizations (see PATCHES.md there):
@@ -119,8 +121,8 @@ if(NOT WIN11TERMINAL_CORE_ONLY)
   )
 
   qt_add_resources(win11terminal "assets" PREFIX "/" FILES data/icons/org.pedro.win11terminal.svg)
-  qt_add_resources(win11terminal "fluent_icons" data/icons/fluent.qrc)
-  qt_add_translations(TARGETS win11terminal
+  qt_add_resources(win11terminal "fluent_icons" PREFIX "/" FILES data/icons/fluent.qrc)
+  qt_add_translations(win11terminal
       TS_FILES translations/win11terminal_pt_BR.ts
       RESOURCE_PREFIX /i18n
       LUPDATE_OPTIONS -no-obsolete
