@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls.Basic
+import QtQuick.Controls
 import Win11Terminal
 
 // The pane's search box (Ctrl+Shift+F), at the top right of the pane. Measured on

@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls.Basic
+import QtQuick.Controls
 import Win11Terminal
 
 // The "Menu nova guia" page: the entries of `newTabMenu` in a list (checkbox, label, edit, up, down,

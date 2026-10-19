@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls.Basic
+import QtQuick.Controls
 
 // A combo box: the current choice and a chevron; a list opens under it. 248x32, #3f3f3f.
 Rectangle {
@@ -32,7 +32,6 @@ Rectangle {
 
     Popup {
         id: popup
-        popupType: Popup.Item
         parent: Overlay.overlay
         padding: 4
         x: root.mapToItem(Overlay.overlay, 0, 0).x

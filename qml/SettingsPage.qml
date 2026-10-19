@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls.Basic
+import QtQuick.Controls
 import Win11Terminal
 
 // The settings page, a tab of its own like in Windows Terminal: a navigation pane on

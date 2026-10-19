@@ -6,6 +6,7 @@
 #include <QLocale>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
+#include <QQuickWindow>
 #include <QStandardPaths>
 #include <QTranslator>
 #include "languagemanager.h"
@@ -97,6 +98,13 @@ int main(int argc, char *argv[])
 #endif
     if (engine.rootObjects().isEmpty()) {
         return 1;
+    }
+    for (auto *o : engine.rootObjects()) {
+        if (auto *w = qobject_cast<QQuickWindow*>(o)) {
+            w->show();
+            w->raise();
+            w->requestActivate();
+        }
     }
     return app.exec();
 }

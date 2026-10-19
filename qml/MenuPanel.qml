@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls.Basic
+import QtQuick.Controls
 import Win11Terminal
 
 // A flyout menu (measured on the tab's context menu, refs/34 to 36): 32px rows, a
@@ -13,7 +13,6 @@ Popup {
     property Item anchorItem       // for a submenu: the row that opened it
     signal chosen(var item)
 
-    popupType: Popup.Item
     padding: 4
     width: menuWidth
     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside

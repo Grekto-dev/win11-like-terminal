@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls.Basic
+import QtQuick.Controls
 import Win11Terminal
 
 // "Alterar cor da guia": sixteen named colours in a 4x4 grid and two buttons (measured on the
@@ -12,7 +12,6 @@ Popup {
                                    "#8A2BE2", "#6A5ACD", "#00FF00", "#D2B48C",
                                    "#FF00FF", "#00FFFF", "#87CEEB", "#A9A9A9"]
     property bool customMode: false
-    popupType: Popup.Item
     padding: 0
     width: 233; height: 216
     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside

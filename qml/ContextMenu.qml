@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls.Basic
+import QtQuick.Controls
 import Win11Terminal
 
 // The terminal's context menu: a command bar (Copy, Paste, "…") over a list, as the original's
@@ -22,7 +22,6 @@ Popup {
     signal searchWebChosen
     signal closeTabChosen
 
-    popupType: Popup.Item
     padding: 0
     margins: 0
     focus: true
@@ -198,7 +197,6 @@ Popup {
                         parent: row
                         x: row.width - 1; y: 0
                         width: 241
-                        popupType: Popup.Item
                         padding: 0
                         closePolicy: Popup.NoAutoClose
                         background: Rectangle { color: Theme.flyout; radius: 8; border.width: 1; border.color: root.border }

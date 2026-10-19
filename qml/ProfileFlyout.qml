@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls.Basic
+import QtQuick.Controls
 import Win11Terminal
 
 // The menu of the "⌄" button: the profiles, then Settings, Command palette and
@@ -19,9 +19,6 @@ Popup {
     signal paletteChosen
     signal aboutChosen
 
-    // Popup.Window (a window of its own) would let the menu leave a small window, but under win11wm
-    // it is a normal transient that swallows clicks; in-window it is.
-    popupType: Popup.Item
     padding: 0
     margins: 0
     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
@@ -108,10 +105,14 @@ Popup {
     // A submenu is as wide as its widest row (the root one is fixed, measured).
     function measure() {
         let w = 0
+        if (!rows) return
         for (let i = 0; i < rows.count; ++i) {
             const col = rows.itemAt(i)
-            if (!col) continue
-            for (const c of col.children) if (c.visible && c.wanted !== undefined) w = Math.max(w, c.wanted)
+            if (!col || !col.children) continue
+            for (let j = 0; j < col.children.length; ++j) {
+                const c = col.children[j]
+                if (c && c.visible && c.wanted !== undefined) w = Math.max(w, c.wanted)
+            }
         }
         rowsWidth = w
     }
