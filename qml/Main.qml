@@ -65,6 +65,13 @@ ApplicationWindow {
 
     ListModel { id: tabs }
 
+    Connections {
+        target: LanguageManager
+        function onLanguageChanged() {
+            win.refreshTitles()
+        }
+    }
+
     Component { id: pageComponent; TabPage { anchors.fill: parent; windowActive: win.active } }
 
     function newTab(profileId, cwd, program, programArguments) {

@@ -692,6 +692,16 @@
         <translation>Configurações</translation>
     </message>
     <message>
+        <location line="+1"/>
+        <source>Language</source>
+        <translation>Idioma</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Select the display language for the application interface.</source>
+        <translation>Selecione o idioma de exibição para a interface do aplicativo.</translation>
+    </message>
+    <message>
         <location line="+14"/>
         <source>Startup</source>
         <translation>Inicialização</translation>

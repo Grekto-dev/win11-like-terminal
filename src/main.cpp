@@ -6,9 +6,9 @@
 #include <QLocale>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
-#include <QQuickWindow>
 #include <QStandardPaths>
 #include <QTranslator>
+#include "languagemanager.h"
 
 namespace
 {
@@ -76,21 +76,12 @@ int main(int argc, char *argv[])
     if (command.isEmpty()) {
         command = parser.positionalArguments();
     }
-
     loadFonts();
-
-    // Portuguese-language sessions use the Brazilian Portuguese resources;
-    // English is the source language.
-    QTranslator translator;
-    const QStringList languages = QLocale::system().uiLanguages();
-    const QString language = qEnvironmentVariable("WIN11TERMINAL_LANG", languages.isEmpty() ? QLocale::system().name() : languages.constFirst());
-    if (language.startsWith(QLatin1String("pt")) && translator.load(QStringLiteral(":/i18n/win11terminal_pt_BR.qm"))) {
-        app.installTranslator(&translator);
-    }
 
     const QString program = command.isEmpty() ? QString() : command.takeFirst();
 
     QQmlApplicationEngine engine;
+    LanguageManager::instance()->init(&engine);
     engine.setInitialProperties({
         {QStringLiteral("program"), program},
         {QStringLiteral("arguments"), command},

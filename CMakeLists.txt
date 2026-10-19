@@ -95,6 +95,7 @@ if(NOT WIN11TERMINAL_CORE_ONLY)
           src/view/terminalview.h src/view/terminalview.cpp
           src/view/fluentsymbol.h src/view/fluentsymbol.cpp
           src/view/systemfont.h src/view/systemfont.cpp
+          src/app/languagemanager.h src/app/languagemanager.cpp
   )
 
   qt_add_shaders(win11terminal "shaders"

@@ -27,17 +27,20 @@ Rectangle {
     SettingsStore { id: store }
 
     // ---- the pages: rows described as data -------------------------------------------------
-    readonly property var navItems: [
-        { id: "startup", label: qsTr("Startup"), icon: "rocket" },
-        { id: "interaction", label: qsTr("Interaction"), icon: "cursor" },
-        { id: "appearance", label: qsTr("Appearance"), icon: "paint_brush" },
-        { id: "colors", label: qsTr("Color schemes"), icon: "color" },
-        { id: "rendering", label: qsTr("Rendering"), icon: "laptop" },
-        { id: "compat", label: qsTr("Compatibility"), icon: "wrench" },
-        { id: "actions", label: qsTr("Actions"), icon: "keyboard" },
-        { id: "newtab", label: qsTr("New tab menu"), icon: "apps_list_detail" },
-        { id: "extensions", label: qsTr("Extensions"), icon: "puzzle_piece", badge: qsTr("NEW") }
-    ]
+    readonly property var navItems: {
+        const _ = LanguageManager.currentLanguage
+        return [
+            { id: "startup", label: qsTr("Startup"), icon: "rocket" },
+            { id: "interaction", label: qsTr("Interaction"), icon: "cursor" },
+            { id: "appearance", label: qsTr("Appearance"), icon: "paint_brush" },
+            { id: "colors", label: qsTr("Color schemes"), icon: "color" },
+            { id: "rendering", label: qsTr("Rendering"), icon: "laptop" },
+            { id: "compat", label: qsTr("Compatibility"), icon: "wrench" },
+            { id: "actions", label: qsTr("Actions"), icon: "keyboard" },
+            { id: "newtab", label: qsTr("New tab menu"), icon: "apps_list_detail" },
+            { id: "extensions", label: qsTr("Extensions"), icon: "puzzle_piece", badge: qsTr("NEW") }
+        ]
+    }
     function schemeChoices() {
         return AppSettings.schemes.map(function(s) { return { v: s.name, l: s.name } })
     }
@@ -171,6 +174,7 @@ Rectangle {
               desc: qsTr("When enabled, the Terminal will display a menu on right-click. When disabled, right-clicking will copy the selected text (or paste if there's no selection)."), def: true },
             { type: "toggle", scope: "g", key: "experimental.detectURLs", title: qsTr("Automatically detect URLs and make them clickable"), def: true } ]
         case "appearance": return [
+            { type: "language", title: qsTr("Language"), desc: qsTr("Select the display language for the application interface.") },
             { type: "toggle", scope: "g", key: "alwaysShowTabs", title: qsTr("Always show tabs"), def: true },
             { type: "toggle", scope: "g", key: "disableAnimations", title: qsTr("Pane animations"), invert: true, def: false },
             { type: "toggle", scope: "g", key: "alwaysOnTop", title: qsTr("Always on top"), desc: qsTr("Terminal will always be the topmost window on the desktop.") },
@@ -347,7 +351,7 @@ Rectangle {
                         MouseArea { anchors.fill: parent; onClicked: root.open(root.parentOf(root.page)) }
                     }
                     Text {
-                        text: root.titleFor(root.page)
+                        text: (LanguageManager.currentLanguage, root.titleFor(root.page))
                         color: Theme.text
                         font.family: Theme.fontFamily
                         font.pixelSize: 20
@@ -363,7 +367,7 @@ Rectangle {
                     onLoaded: item.store = store
                 }
                 Repeater {
-                    model: root.isActionsPage || root.isColorsPage || root.page === "newtab" ? [] : root.rowsFor(root.page)
+                    model: (root.isActionsPage || root.isColorsPage || root.page === "newtab") ? [] : (LanguageManager.currentLanguage, root.rowsFor(root.page))
                     delegate: Loader {
                         id: rowLoader
                         required property var modelData
@@ -371,6 +375,7 @@ Rectangle {
                         enabled: modelData.disabled !== true
                         opacity: modelData.disabled === true ? 0.45 : 1
                         sourceComponent: modelData.type === "toggle" ? toggleRow : modelData.type === "choice" ? choiceRow
+                            : modelData.type === "language" ? languageRow
                             : modelData.type === "field" ? fieldRow : modelData.type === "number" ? numberRow
                             : modelData.type === "size" ? sizeRow : modelData.type === "section" ? sectionRow
                             : modelData.type === "preview" ? previewRow : modelData.type === "decimal" ? decimalRow
@@ -789,6 +794,18 @@ Rectangle {
                         const n = parseInt(t)
                         if (!isNaN(n)) store.set(modelData.scope, "fontWeight", Math.max(100, Math.min(990, n)))
                     }
+                }
+            }
+        } }
+    Component { id: languageRow
+        SettingCard {
+            title: modelData.title
+            description: modelData.desc || ""
+            ChoiceBox {
+                options: LanguageManager.availableLanguages
+                value: LanguageManager.currentLanguage
+                onChosen: function(v) {
+                    LanguageManager.setLanguage(v)
                 }
             }
         } }

@@ -28,8 +28,7 @@ A modern, high-fidelity Windows 11-style Terminal emulator for Linux Mint and ot
   - No external private framework dependencies.
   - Bundled Fluent UI system icons (embedded as scalable SVGs).
   - Bundled Cascadia Mono font family.
-  - Automatic desktop theme and system font detection (Ubuntu, Inter, Segoe UI, etc.).
-- **🌐 Internationalization**: Full English and Brazilian Portuguese (`pt-BR`) interfaces out of the box.
+- **🌐 Multi-Language & Live Switcher**: In-app language selector in Settings > Appearance that switches the entire interface immediately on the fly (English default, with Brazilian Portuguese `pt-BR`) and persists your preference across sessions.
 
 ---
 
