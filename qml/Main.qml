@@ -264,6 +264,10 @@ ApplicationWindow {
         const r = pad.length >= 4 ? pad[2] : pad[0], b = pad.length >= 4 ? pad[3] : t
         width = Math.round(cols * leaf.view.cellWidth + l + r + 17 + 2)
         height = Math.round(rows * leaf.view.cellHeight + t + b + Theme.barHeight + 2)
+        if (Screen.width > width && Screen.height > height) {
+            win.x = Math.max(0, Math.round((Screen.width - width) / 2))
+            win.y = Math.max(0, Math.round((Screen.height - height) / 2))
+        }
     }
     // The terminal's context menu. `pos` is in the pane's coordinates; `byKeyboard` hangs it from the
     // cursor or the selection, like the Menu key does in the original.

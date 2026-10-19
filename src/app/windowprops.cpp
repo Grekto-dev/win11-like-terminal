@@ -10,6 +10,40 @@ void WindowProps::setWindow(QQuickWindow *window)
     }
     m_window = window;
     Q_EMIT windowChanged();
+    if (m_window && QGuiApplication::platformName() == QLatin1String("xcb")) {
+        auto *x11 = qGuiApp->nativeInterface<QNativeInterface::QX11Application>();
+        if (x11 && x11->connection()) {
+            xcb_connection_t *conn = x11->connection();
+            const char typeName[] = "_NET_WM_WINDOW_TYPE_NORMAL";
+            xcb_intern_atom_reply_t *typeReply = xcb_intern_atom_reply(conn, xcb_intern_atom(conn, 0, sizeof(typeName) - 1, typeName), nullptr);
+            const char propName[] = "_NET_WM_WINDOW_TYPE";
+            xcb_intern_atom_reply_t *propReply = xcb_intern_atom_reply(conn, xcb_intern_atom(conn, 0, sizeof(propName) - 1, propName), nullptr);
+            if (typeReply && propReply) {
+                xcb_atom_t normalType = typeReply->atom;
+                xcb_change_property(conn, XCB_PROP_MODE_REPLACE, xcb_window_t(m_window->winId()), propReply->atom, XCB_ATOM_ATOM, 32, 1, &normalType);
+                free(typeReply);
+                free(propReply);
+            }
+            const char activeName[] = "_NET_ACTIVE_WINDOW";
+            xcb_intern_atom_reply_t *activeReply = xcb_intern_atom_reply(conn, xcb_intern_atom(conn, 0, sizeof(activeName) - 1, activeName), nullptr);
+            if (activeReply) {
+                const xcb_setup_t *setup = xcb_get_setup(conn);
+                xcb_screen_iterator_t iter = xcb_setup_roots_iterator(setup);
+                xcb_window_t root = iter.data->root;
+                xcb_client_message_event_t ev;
+                std::memset(&ev, 0, sizeof(ev));
+                ev.response_type = XCB_CLIENT_MESSAGE;
+                ev.format = 32;
+                ev.window = xcb_window_t(m_window->winId());
+                ev.type = activeReply->atom;
+                ev.data.data32[0] = 2;
+                ev.data.data32[1] = XCB_CURRENT_TIME;
+                xcb_send_event(conn, 0, root, XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT | XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY, (const char *)&ev);
+                free(activeReply);
+            }
+            xcb_flush(conn);
+        }
+    }
     publish();
 }
 
