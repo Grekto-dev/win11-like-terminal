@@ -1,0 +1,20 @@
+[Desktop Entry]
+Type=Application
+Name=Terminal
+Name[pt_BR]=Terminal
+GenericName=Terminal Emulator
+GenericName[pt_BR]=Emulador de terminal
+Comment=Command-line shells in tabs and panes
+Comment[pt_BR]=Shells de linha de comando em guias e painéis
+Exec=@CMAKE_INSTALL_FULL_BINDIR@/win11terminal
+Icon=org.pedro.win11terminal
+Terminal=false
+Categories=System;TerminalEmulator;
+Keywords=shell;prompt;command;commandline;cmd;console;bash;powershell;
+StartupWMClass=win11terminal
+Actions=new-window;
+
+[Desktop Action new-window]
+Name=New window
+Name[pt_BR]=Nova janela
+Exec=@CMAKE_INSTALL_FULL_BINDIR@/win11terminal

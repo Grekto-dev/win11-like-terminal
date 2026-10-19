@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Own drawing (a console window with a prompt); not the Windows Terminal logo. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <rect x="16" y="32" width="224" height="192" rx="20" fill="#1c1c1c"/>
+  <path d="M16 52a20 20 0 0 1 20-20h184a20 20 0 0 1 20 20v22H16z" fill="#3a3a3a"/>
+  <circle cx="44" cy="53" r="6" fill="#8a8a8a"/><circle cx="66" cy="53" r="6" fill="#8a8a8a"/><circle cx="88" cy="53" r="6" fill="#8a8a8a"/>
+  <path d="M64 108l52 36-52 36" fill="none" stroke="#4cc2ff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M132 186h56" fill="none" stroke="#f2f2f2" stroke-width="16" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,347 @@
+About	Sobre
+Version: %1	Versão: %1
+Source code	Código-fonte
+Documentation	Documentação
+Release notes	Notas de versão
+Privacy policy	Política de privacidade
+Third-Party notices	Avisos de Terceiros
+Send feedback	Enviar comentários
+OK	OK
+Open about dialog	Abrir a caixa de diálogo sobre
+Open new tab dropdown	Abrir a nova guia suspensa
+Open settings	Abrir configurações
+Open settings file (JSON)	Abrir o arquivo de configurações (JSON)
+Open default settings file (JSON)	Abrir o arquivo de configurações padrão (JSON)
+Open the settings file directory	Abrir o diretório de arquivo de configurações
+Open current working directory	Abrir o diretório de trabalho atual
+Toggle command palette	Ativar/desativar paleta de comandos
+New tab	Nova guia
+New window	Nova janela
+Duplicate tab	Duplicar guia
+Close tab	Fechar guia
+Close window	Fechar a janela
+Next tab	Próxima guia
+Previous tab	Guia anterior
+Switch to the last tab	Alternar para a última guia
+Split pane right	Dividir painel à direita
+Split pane down	Dividir painel para baixo
+Duplicate pane	Duplicar painel
+Close pane	Fechar painel
+Move focus left	Mover foco para esquerda
+Move focus right	Mover foco para direita
+Move focus up	Mover foco para cima
+Move focus down	Mover foco para baixo
+Move focus to the last used pane	Mover o foco para o último painel usado
+Resize pane left	Redimensionar painel para esquerda
+Resize pane right	Redimensionar painel para direita
+Resize pane up	Redimensionar painel para cima
+Resize pane down	Redimensionar painel para baixo
+Copy text	Copiar texto
+Paste	Colar
+Select all text	Selecionar todo o texto
+Find	Localizar
+Scroll up	Rolar para cima
+Scroll down	Rolar para baixo
+Scroll up one page	Rolar uma página para cima
+Scroll down one page	Rolar uma página para baixo
+Scroll to the top of history	Rolar para o início do histórico
+Scroll to the bottom of history	Rolar para o final do histórico
+Clear buffer	Limpar o buffer
+Increase font size	Aumentar tamanho da fonte
+Decrease font size	Diminuir tamanho da fonte
+Reset font size	Redefinir tamanho da fonte
+Toggle fullscreen	Ativar/desativar tela inteira
+Restart connection	Reiniciar conexão
+Type a command name...	Digite o nome do comando…
+Terminal	Terminal
+Settings	Configurações
+Command palette	Paleta de comandos
+No results found	Nenhum resultado encontrado
+[process exited with code %1]	[processo encerrado com o código %1]
+You can now close this terminal with Ctrl+D, or press Enter to restart.	Agora você pode fechar este terminal com Ctrl+D ou pressione Enter para reiniciar.
+Startup	Inicialização
+Interaction	Interação
+Appearance	Aparência
+Color schemes	Esquema de cores
+Rendering	Renderização
+Compatibility	Compatibilidade
+Actions	Ações
+New tab menu	Menu nova guia
+Extensions	Extensões
+NEW	NOVO
+Profiles	Perfis
+Defaults	Padrões
+Add a new profile	Adicionar novo perfil
+Open JSON file	Abrir o arquivo JSON
+Save	Salvar
+Discard changes	Descartar alterações
+On	Ativado
+Off	Desativado
+default	padrão
+Default profile	Perfil padrão
+Profile that opens when you click the ' + ' icon or by typing the new tab key binding.	Perfil que é aberto quando você clica no ícone ' + ' ou digitando a nova associação de tecla de tabulação.
+Launch size	Tamanho de inicialização
+The number of rows and columns displayed in the window upon first load. Measured in characters.	O número de linhas e colunas exibidas na janela após o primeiro carregamento. Medido em caracteres.
+Automatically copy selection to clipboard	Copiar a seleção automaticamente para a área de transferência
+Remove trailing white-space in rectangular selection	Remover o espaço vazio na seleção retangular
+Remove trailing white-space when pasting	Remover espaço em branco à direita ao colar
+Word delimiters	Delimitadores das palavras
+These symbols will be used when you double-click text in the terminal or activate "Mark mode".	Esses símbolos serão usados quando você clicar duas vezes no texto no terminal ou ativar o "Modo de marcação".
+Snap window resizing to character grid	Ajustar o redimensionamento da janela para a grade de caracteres
+When disabled, the window will resize smoothly.	Quando desabilitado, a janela será redimensionada sem problemas.
+Automatically focus pane on mouse hover	Focalizar painel automaticamente ao passar o mouse
+Always show tabs	Sempre mostrar as guias
+Pane animations	Animações do painel
+Always on top	Sempre no topo
+Terminal will always be the topmost window on the desktop.	O terminal sempre será a janela mais superior na área de trabalho.
+Tab width mode	Modo da largura da guia
+Compact will shrink inactive tabs to the size of the icon.	Compactar reduzirá as guias inativas para o tamanho do ícone.
+Equal	Igual
+Title length	Comprimento de título
+Compact	Compacto
+Reset to default settings	Redefinir para as configurações padrão
+Restore	Restaurar
+Name	Nome
+The name of the profile that appears in the dropdown.	O nome do perfil que aparece na lista suspensa.
+Command line	Linha de comando
+Executable used in the profile.	Arquivo executável usado no perfil.
+Starting directory	Diretório inicial
+The directory the profile starts in when it is loaded.	A pasta em que o perfil começa quando é carregado.
+Tab title	Título da guia
+Replaces the profile name as the title to pass to the shell on startup.	Substitui o nome do perfil como o título a ser passado para o Shell na inicialização.
+Hide profile from dropdown	Ocultar perfil da lista suspensa
+If enabled, the profile will not appear in the list of profiles. This can be used to hide default profiles and dynamically generated profiles, while leaving them in your settings file.	Se habilitado, o perfil não aparecerá na lista de perfis. Isso pode ser usado para ocultar perfis padrão e perfis gerados dinamicamente, deixando-os no arquivo de configurações.
+Additional settings	Configurações adicionais
+Font face	Tipo de fonte
+You can use multiple fonts by separating them with an ASCII comma.	Pode utilizar vários tipos de letra separando-os com uma vírgula ASCII.
+Font size	Tamanho da fonte
+Size of the font in points.	Tamanho da fonte por pontos.
+Color scheme	Esquema de cores
+The color scheme used by the profile.	O esquema de cores usado pelo perfil.
+Cursor shape	Forma do cursor
+Bar ( ┃ )	Barra ( ┃ )
+Underscore ( ▁ )	Sublinhado ( ▁ )
+Vintage ( ▃ )	Vintage ( ▃ )
+Double underscore ( ‗ )	Sublinhado Duplo ( ‗ )
+Empty box ( ▯ )	Caixa vazia ( ▯ )
+Filled box ( █ )	Caixa cheia ( █ )
+Padding	Preenchimento
+Sets the padding around the text within the window.	Define o preenchimento ao redor do texto na janela.
+History size	Tamanho de histórico
+The number of lines above the ones displayed in the window you can scroll back to.	O número de linhas acima das exibidas na janela à qual você pode rolar para trás.
+The settings defined here will be applied to all profiles unless a profile's own settings override them.	As configurações definidas aqui serão aplicadas a todos os perfis, a menos que sejam substituídas pelas configurações de um perfil.
+The terminal draws with the GPU through Qt's scene graph; there are no rendering options to choose here.	O terminal desenha com a GPU pelo grafo de cena do Qt; não há opções de renderização para escolher aqui.
+The new tab menu lists the profiles; it is edited in settings.json (newTabMenu).	O menu de nova guia lista os perfis; ele é editado no settings.json (newTabMenu).
+Extensions are not available in this terminal.	As extensões não estão disponíveis neste terminal.
+Do you want to close all tabs?	Deseja fechar todas as guias?
+Close all	Fechar tudo
+Cancel	Cancelar
+Change tab color	Alterar cor da guia
+Rename tab	Renomear guia
+Split tab	Guia Dividir
+Move tab	Mover guia
+Move tab to new window	Mover guia para nova janela
+Move right	Mover para a direita
+Move left	Mover para a esquerda
+Export text	Exportar texto
+Close	Fechar
+Close tabs to the right	Fechar guias à direita
+Close other tabs	Fechar outras guias
+Reset	Restaurar
+Custom	Personalizado
+Successfully exported terminal content	Conteúdo do terminal exportado com êxito
+Failed to export terminal content	Falha ao exportar o conteúdo do terminal
+Toggle mark mode	Ativar/Desativar o modo de marcação
+Automatically detect URLs and make them clickable	Detectar automaticamente URLs e os tornar clicáveis
+Background opacity	Opacidade de fundo
+Sets the transparency of the window for the profile.	Define a opacidade da janela.
+Enable acrylic material	Habilitar material acrílico
+Terminal emulation	Emulação de Terminal
+Advanced	Avançado
+Delete profile	Apagar perfil
+Profile termination behavior	Comportamento de término do perfil
+Never close automatically	Nunca fechar automaticamente
+Close only when process exits successfully	Fechar somente quando o processo sair com êxito
+Close when process exits, fails, or crashes	Fechar quando o processo sai, falha ou falha
+Scroll to input when typing	Rolar para a entrada de texto ao digitar
+Suppress title changes	Suprimir alterações do título
+Bell notification style	Estilo de notificação de sino
+Audible	Audível
+Flash window	Piscar janela
+Flash taskbar	Piscar na barra de tarefas
+All	Tudo
+None	Nenhum
+New empty profile	Novo perfil vazio
+Duplicate a profile	Duplicar um perfil
+Duplicate	Duplicar
+Profile %1	Perfil %1
+%1 - Copy	%1 - Cópia
+Add new	Adicionar novo
+copy	cópia
+Foreground	Primeiro Plano
+Background	Plano de fundo
+Cursor color	Cor do cursor
+Selection background	Seleção de tela de fundo
+Black	Preto
+Red	Vermelho
+Green	Verde
+Yellow	Amarelo
+Blue	Azul
+Purple	Roxo
+Cyan	Ciano
+White	Branco
+Bright black	Preto brilhante
+Bright red	Vermelho brilhante
+Bright green	Verde brilhante
+Bright yellow	Amarelo brilhante
+Bright blue	Azul brilhante
+Bright purple	Roxo brilhante
+Bright cyan	Ciano brilhante
+Bright white	Branco brilhante
+Set as default	Definir como padrão
+Delete color scheme	Excluir esquema de cores
+Find...	Localizar...
+Web search	Pesquisa na Web
+Split pane	Dividir painel
+Duplicate %1	Duplicar %1
+Show context menu	Mostrar menu de contexto
+Display a menu on right-click	Exibir um menu ao clicar com o botão direito do mouse
+When enabled, the Terminal will display a menu on right-click. When disabled, right-clicking will copy the selected text (or paste if there's no selection).	Quando habilitado, o Terminal exibirá um menu ao clicar com o botão direito do mouse. Quando desabilitado, clicar com o botão direito do mouse copiará o texto selecionado (ou colará se não houver seleção).
+<Separator>	<Separador>
+<Remaining profiles>	<Remando perfis>
+<Root>	<Raiz>
+Move selected entries to folder...	Mover as entradas selecionadas para a pasta...
+Delete selected entries	Excluir entradas selecionadas
+Current Folder Properties	Propriedades da Pasta Atual
+Folder Name	Nome da Pasta
+Allow inlining	Permitir embutimento
+When enabled, if the folder only has a single entry, the entry will show directly and no folder will be rendered.	Quando habilitada, se a pasta tiver apenas uma única entrada, a entrada será mostrada diretamente e nenhuma pasta será renderizada.
+Allow empty	Permitir vazio
+When enabled, if the folder has no entries, it will still be displayed. Otherwise, the folder will not be rendered.	Quando habilitada, se a pasta não tiver entradas, ela ainda será exibida. Caso contrário, a pasta não será renderizada.
+Add Entry	Adicionar Entrada
+Separator	Separador
+Folder	Pasta
+Folder name	Nome da pasta
+Profile matcher	Correspondente de perfil
+Add a group of profiles that match at least one of the defined regular expression properties	Adicionar um grupo de perfis que correspondam a pelo menos uma das propriedades de expressão regular definidas
+Learn more about regular expressions	Saiba mais sobre expressões regulares
+Profile name (regular expression)	Nome do perfil (expressão regular)
+Profile source (regular expression)	Origem do perfil (expressão regular)
+Commandline (regular expression)	Linha de comando (expressão regular)
+Add profile matcher	Adicionar correspondente de perfil
+Remaining profiles	Perfis restantes
+There can only be one "remaining profiles" entry	Só pode haver uma entrada de "perfis restantes"
+Move to folder	Mover para a pasta
+Profile	Perfil
+Move tab to a new window	Mover guia para uma nova janela
+Graphics API	API de Gráficos
+Direct3D 11 provides a more performant and feature-rich experience, whereas Direct2D is more stable. The default option "Automatic" will pick the API that best fits your graphics hardware. If you experience significant issues, consider using Direct2D.	O Direct3D 11 fornece uma experiência mais completa e avançada de recursos, enquanto o Direct2D é mais estável. A opção padrão "Automático" escolherá a API que melhor se ajusta ao hardware gráfico. Se você tiver problemas significativos, considere o uso Direct2D.
+Disable partial Swap Chain invalidation	Desabilitar a invalidação parcial da cadeia de troca
+By default, the text renderer uses a FLIP_SEQUENTIAL Swap Chain and declares dirty rectangles via the Present1 API. When this setting is enabled, a FLIP_DISCARD Swap Chain will be used instead, and no dirty rectangles will be declared. Whether one or the other is better depends on your hardware and various other factors.	Por padrão, o renderizador de texto usa FLIP_SEQUENTIAL Cadeia de Permuta e declara sujo retângulos por meio da API Present1. Quando esta configuração estiver habilitada, um FLIP_DISCARD cadeia de troca será usado e nenhum retângulo sujo será declarado. Se um ou outro é melhor depende do hardware e de vários outros fatores.
+Use software rendering (WARP)	Usar a renderização de software (WARP)
+When enabled, the terminal will use a software rasterizer (WARP). This setting should be left disabled under almost all circumstances.	Quando habilitado, o terminal usará um rasterizador de software (WARP). Esta configuração deve ser desabilitada em quase todas as circunstâncias.
+Allow the terminal to run in the background	Permitir que o Terminal seja executado em segundo plano
+This allows actions such as Global Summon and Quake Mode actions to work even when no windows are open.	Isso permite que ações como Ações de Bloqueio Global e Modo de Quake funcionem mesmo quando nenhuma janela estiver aberta.
+Text measurement mode	Modo de medição de texto
+This changes how incoming text is grouped into cells. "Grapheme clusters" is the most modern and Unicode-correct option, while "wcswidth" is a common approach on UNIX and "Legacy console" reproduces the older console behavior. Restart the terminal to apply this setting to newly launched applications.	Isso altera como o texto recebido é agrupado em células. A opção "Clusters do Grapheme" é a mais moderna e correta para Unicode; "wcswidth" é uma abordagem comum no UNIX e "Console legado" reproduz o comportamento antigo do console. Reinicie o terminal para aplicar essa configuração aos aplicativos iniciados em seguida.
+Grapheme clusters	Clusters do Grapheme
+Console Host	Host do console
+Clear cache	Limpar cache
+The cache stores data related to saved sessions and automatically generated profiles.	O cache armazena dados relacionados a sessões salvas e perfis gerados automaticamente.
+Clear	Limpar
+Automatic	Automático
+Legacy console	Console legado
+Direct2D	Direct2D
+Direct3D 11	Direct3D 11
+This changes how incoming text is grouped into cells. "Grapheme clusters" is the most modern and Unicode-correct option, while "wcswidth" is a common approach on UNIX and "Legacy console" reproduces the older console behavior. Restart the terminal to apply this setting to newly launched applications.	Isso altera como o texto recebido é agrupado em células. A opção "Clusters do Grapheme" é a mais moderna e correta para Unicode; "wcswidth" é uma abordagem comum no UNIX e "Console legado" reproduz o comportamento antigo do console. Reinicie o terminal para aplicar essa configuração aos aplicativos iniciados em seguida.
+Adjust terminal font size by scrolling while holding the Ctrl key	Ajustar o tamanho da fonte do terminal rolando enquanto mantém a tecla Ctrl pressionada
+Adjust terminal opacity by scrolling while holding the Ctrl and Shift keys	Ajustar a opacidade do terminal ao rolar enquanto mantém as teclas Ctrl e Shift
+
+Applies a translucent texture to the background of the window.	Aplica uma textura translúcida ao plano de fundo da janela.
+Text	Texto
+Expand to override the foreground, background, and selection background.	Expanda para substituir o plano de fundo, o plano de fundo e a tela de fundo da seleção.
+Line height	Altura da linha
+Override the line height of the terminal. Measured as a multiple of the font size. The default value depends on your font and is typically around 1.2.	Substituir a altura da linha do terminal. Medido como um múltiplo do tamanho da fonte. O valor padrão depende da sua fonte e geralmente fica em torno de 1,2.
+Cell width	Largura da célula
+Override the cell width of the terminal. Measured as a multiple of the font size. The default value depends on your font and is typically around 0.6.	Substituir a largura da célula do terminal. Medido como um múltiplo do tamanho da fonte. O valor padrão depende de sua fonte e geralmente está em torno de 0,6.
+Font weight	Espessura da fonte
+Sets the weight (lightness or heaviness of the strokes) for the given font.	Define o peso (claridade ou pesado dos traços) para a fonte especificada.
+Thin	Fina
+Extra-Light	Extra-claro
+Light	Claro
+Semi-Light	Semi-claro
+Normal	Normal
+Medium	Médio
+Semi-Bold	Semi-negrito
+Bold	Negrito
+Extra-Bold	Extra-negrito
+Black	Preto
+Extra-Black	Extra-preto
+Custom	Personalizado
+Custom (%1)	Personalizado (%1)
+Tag	Tag
+Value	Valor
+Add	Adicionar
+Remove	Remover
+Use a 4-character OpenType tag.	Use uma tag OpenType de 4 caracteres.
+Enter a numeric value.	Insira um valor numérico.
+Variable font axes	Eixos de fonte variáveis
+Add or remove font axes for the given font.	Adicionar ou remover eixos de fonte para a fonte fornecida.
+Font features	Recursos de fonte
+Add or remove font features for the given font.	Adicionar ou remover recursos de fonte para a fonte fornecida.
+Builtin Glyphs	Glifos internos
+When enabled, the terminal draws custom glyphs for block element and box drawing characters instead of using the font.	Quando habilitado, o terminal desenha glifos personalizados para elementos de bloco e caracteres de desenho de caixa em vez de usar a fonte.
+Full-color Emoji	Emoji colorido
+When enabled, Emoji are displayed in full color.	Quando habilitado, o Emoji é exibido em cores.
+Retro terminal effects	Efeito de terminal retrô
+Show "retro" terminal effects such as glowing text and scan lines.	Mostre efeitos de terminal de estilo retrô, como texto brilhante e linhas de digitalização.
+Automatically adjust lightness of indistinguishable text	Ajuste automaticamente a clareza do texto indistinguível
+Automatically brightens or darkens text to make it more visible. Even when enabled, this adjustment will only occur when a combination of foreground and background colors would result in poor contrast.	Clareia ou escurece automaticamente o texto para torná-lo mais visível. Mesmo quando ativado, esse ajuste só ocorrerá quando uma combinação de cores de primeiro plano e de fundo resultar em baixo contraste.
+Never	Nunca
+Only for colors in the color scheme	Apenas para cores no esquema de cores
+Always	Sempre
+Cursor	Cursor
+Double underscore ( ‗ )	Sublinhado Duplo ( ‗ )
+Filled box ( █ )	Caixa cheia ( █ )
+Empty box ( ▯ )	Caixa vazia ( ▯ )
+Overrides the cursor color from the color scheme.	Substitui a cor do cursor do esquema de cores.
+Background image	Imagem da tela de fundo
+Background image path	Caminho da imagem de tela de fundo
+File location of the image used in the background of the window.	Local do arquivo da imagem usada em segundo plano da janela.
+Text Formatting	Formatação de Texto
+Intense text style	Estilo de texto intenso
+Bold font	Fonte em negrito
+Bright colors	Cores brilhantes
+Bold font with bright colors	Fonte em negrito com cores brilhantes
+Transparency	Transparência
+Window	Janela
+Sets the padding around the text within the window.	Define o preenchimento ao redor do texto na janela.
+Scrollbar visibility	Visibilidade da barra de rolagem
+Visible	Visível
+Hidden	Oculto
+Text antialiasing	Suavização de texto
+Controls how text is antialiased in the renderer.	Controla como é feito o anti-aliasing do texto na renderização.
+Grayscale	Escala de Cinza
+ClearType	ClearType
+Aliased	Alias
+AltGr aliasing	Alias para AltGr
+By default, Ctrl+Alt is treated as an alias for AltGr. This setting overrides the default behavior.	Por padrão, Ctrl+Alt é tratado como um alias para AltGr. Essa configuração substitui o comportamento padrão.
+Automatic	Automático
+Bell sound	Som de sino
+Controls what sound is played when the application emits a BEL character. "Bell notification style" must include "Audible".	Controla qual som é reproduzido quando o aplicativo emite um BEL caractere. "Estilo de notificação de sino" deve incluir "Udível".
+Default system sound	Som do sistema padrão
+Controls what happens when the application emits a BEL character.	Controla o que acontece quando o aplicativo emite um caractere BEL.
+Display a menu on right-click	Exibir um menu ao clicar com o botão direito do mouse
+When enabled, the Terminal will display a menu on right-click. When disabled, right-clicking will copy the selected text (or paste if there's no selection).	Quando habilitado, o Terminal exibirá um menu ao clicar com o botão direito do mouse. Quando desabilitado, clicar com o botão direito do mouse copiará o texto selecionado (ou colará se não houver seleção).
+Display marks on the scrollbar	Exibir marcas na barra de rolagem
+When enabled, the Terminal will display marks on the scrollbar when searching for text or when shell integration is enabled.	Quando habilitado, o Terminal exibirá marcas na barra de rolagem ao procurar texto ou quando a integração do shell estiver habilitada.
+Automatically mark prompts on pressing Enter	Marcar automaticamente os prompts ao pressionar Enter
+When enabled, the Terminal automatically add a mark indicating the position of the end of the command when you press enter.	Quando habilitado, o Terminal adiciona automaticamente uma marca indicando a posição do final do comando quando você pressiona Enter.
+Launch this application with a new environment block	Iniciar esse aplicativo com um novo bloco de ambiente
+When enabled, the Terminal will generate a new environment block when creating new tabs or panes with this profile. When disabled, the tab/pane will instead inherit the variables the Terminal was started with.	Quando habilitado, o Terminal gerará um novo bloco de ambiente ao criar novas guias ou painéis com esse perfil. Quando desabilitado, a guia/painel herdará as variáveis com as quais o Terminal foi iniciado.
+Experimental: Reposition the cursor with mouse clicks	Experimental: reposicionar o cursor com cliques do mouse
+When enabled, clicking inside the prompt will move the cursor to that position. This requires shell integration to be enabled in your shell to work as expected.	Quando habilitado, clicar dentro do prompt moverá o cursor para essa posição. Isso exige que a integração do shell seja habilitada no shell para funcionar conforme o esperado.
+Experimental: Display suggested input in rainbow colors	Experimental: exibir entrada sugerida em cores de arco-íris
+Path translation	Tradução de caminho
+Controls how file and directory paths are translated during drag and drop operations.	Controla como os caminhos de arquivo e diretório são traduzidos durante operações de arrastar e soltar.
+Use color scheme	Usar cor do esquema
