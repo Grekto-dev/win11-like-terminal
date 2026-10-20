@@ -149,6 +149,55 @@ Once installed, **Terminal** will appear in your application menu (under System 
 
 ---
 
+## 🌟 Set as Default Terminal
+
+To make **Win11-Like Terminal** the system-wide default terminal emulator across Linux Mint (Cinnamon), GNOME, MATE, CLI scripts, and desktop launchers (handling `Terminal=true` .desktop entries like ComfyUI, htop, etc.):
+
+### Quick Setup (Automatic Script)
+
+Simply run:
+```bash
+./scripts/set-as-default.sh
+```
+
+*(Note: `install-local.sh` runs this step automatically after installation).*
+
+### Manual Setup
+
+If you prefer to configure it manually:
+
+1. **Debian / Ubuntu / Linux Mint alternatives**:
+   ```bash
+   sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/win11terminal 50
+   sudo update-alternatives --set x-terminal-emulator /usr/bin/win11terminal
+   ```
+
+2. **Desktop Environment (GSettings)**:
+   ```bash
+   # Cinnamon
+   gsettings set org.cinnamon.desktop.default-applications.terminal exec 'win11terminal'
+   gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg '-e'
+
+   # GNOME
+   gsettings set org.gnome.desktop.default-applications.terminal exec 'win11terminal'
+   gsettings set org.gnome.desktop.default-applications.terminal exec-arg '-e'
+   ```
+
+3. **Freedesktop `xdg-terminal-exec` (GLib / GIO integration)**:
+   GLib (which launches desktop applications) gives first priority to `xdg-terminal-exec`. Install it and declare the default preference:
+   ```bash
+   sudo apt install xdg-terminal-exec
+
+   # Set preference for the user
+   mkdir -p ~/.config/xdg-terminals.list.d ~/.local/share/xdg-terminals
+   cp /usr/share/applications/org.pedro.win11terminal.desktop ~/.local/share/xdg-terminals/
+   grep -q "X-ExecArg" ~/.local/share/xdg-terminals/org.pedro.win11terminal.desktop || echo "X-ExecArg=-e" >> ~/.local/share/xdg-terminals/org.pedro.win11terminal.desktop
+   echo "org.pedro.win11terminal.desktop" > ~/.config/xdg-terminals.list
+   echo "org.pedro.win11terminal.desktop" > ~/.config/xdg-terminals.list.d/default.list
+   ```
+
+---
+
 ## ⌨️ Useful Keyboard Shortcuts
 
 | Shortcut | Action |

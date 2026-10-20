@@ -40,6 +40,11 @@ echo "=== Atualizando atalhos e ícones ==="
 sudo update-desktop-database 2>/dev/null || true
 sudo gtk-update-icon-cache -f -t /usr/share/icons/hicolor 2>/dev/null || true
 
+# Configura como terminal padrão automaticamente
+if [ -f "$SCRIPT_DIR/scripts/set-as-default.sh" ]; then
+  "$SCRIPT_DIR/scripts/set-as-default.sh" || true
+fi
+
 echo ""
 echo "=========================================================="
 echo " Instalação concluída com sucesso! (Versão 0.9.0)"

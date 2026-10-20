@@ -133,6 +133,7 @@ if(NOT WIN11TERMINAL_CORE_ONLY)
   install(FILES data/icons/org.pedro.win11terminal.svg DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps)
   configure_file(data/org.pedro.win11terminal.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/org.pedro.win11terminal.desktop @ONLY)
   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.pedro.win11terminal.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.pedro.win11terminal.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/xdg-terminals)
   install(FILES data/fonts/CascadiaMono.ttf data/fonts/CascadiaMonoItalic.ttf data/fonts/OFL.txt
       DESTINATION ${CMAKE_INSTALL_DATADIR}/win11terminal/fonts)
   install(DIRECTORY data/icons/fluent/ DESTINATION ${CMAKE_INSTALL_DATADIR}/win11terminal/icons/fluent)

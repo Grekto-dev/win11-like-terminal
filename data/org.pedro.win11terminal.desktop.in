@@ -12,6 +12,7 @@ Terminal=false
 Categories=System;TerminalEmulator;
 Keywords=shell;prompt;command;commandline;cmd;console;bash;powershell;
 StartupWMClass=win11terminal
+X-ExecArg=-e
 Actions=new-window;
 
 [Desktop Action new-window]
