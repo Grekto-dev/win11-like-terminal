@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(win11terminal VERSION 0.9.0 LANGUAGES C CXX)
+project(win11terminal VERSION 0.9.1 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

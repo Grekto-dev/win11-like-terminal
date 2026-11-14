@@ -3,7 +3,7 @@
 A modern, high-fidelity Windows 11-style Terminal emulator for Linux Mint and other Linux distributions, built with Qt 6 and QML on top of a fast, custom-tuned terminal emulation core.
 
 ![Platform](https://img.shields.io/badge/Platform-Linux%20Mint%20%7C%20Ubuntu%20%7C%20Debian%20%7C%20Arch%20%7C%20Fedora-blue)
-![Version](https://img.shields.io/badge/Version-0.9.0-green)
+![Version](https://img.shields.io/badge/Version-0.9.1-green)
 ![Qt](https://img.shields.io/badge/Qt-6.4+-brightgreen)
 ![License](https://img.shields.io/badge/License-GPL--3.0%20%2F%20MIT-blue)
 
@@ -21,7 +21,7 @@ A modern, high-fidelity Windows 11-style Terminal emulator for Linux Mint and ot
   - Startup behaviors, default profile, and initial window size.
   - Interaction settings (copy on select, mouse wheel scrolling, paste warnings).
   - Appearance (font family, font size, cell spacing, line height, background opacity, and acrylic blur).
-  - Dedicated **About** page reporting version `0.9.0`, system environment, and repository links.
+  - Dedicated **About** page reporting version `0.9.1`, system environment, and repository links.
   - Profiles manager (auto-detects Bash, Zsh, Fish, PowerShell, and custom shells).
   - New tab menu customizer and command palette actions.
 - **🔍 Search & Command Palette**: Instant buffer search (`Ctrl+Shift+F`) with match highlighting and a fuzzy command palette (`Ctrl+Shift+P`) for quick actions.

@@ -186,8 +186,8 @@ Rectangle {
             { type: "danger", title: qsTr("Clear cache"), desc: qsTr("The cache stores data related to saved sessions and automatically generated profiles."), button: qsTr("Clear"), action: "clearCache" },
             { type: "danger", title: qsTr("Reset to default settings"), button: qsTr("Restore"), action: "reset" } ]
         case "about": return [
-            { type: "aboutCard", title: qsTr("Win11-Like Terminal for Linux"), desc: qsTr("A standalone, modern Windows 11-style terminal emulator built for Linux Mint and other distributions."), tag: "v0.9.0" },
-            { type: "aboutCard", title: qsTr("Version and Environment"), desc: qsTr("Application version: %1\nQt Runtime: %2\nPlatform: Linux (%3)").arg("0.9.0").arg(AppSettings.qtVersion).arg(Qt.platform.os) },
+            { type: "aboutCard", title: qsTr("Win11-Like Terminal for Linux"), desc: qsTr("A standalone, modern Windows 11-style terminal emulator built for Linux Mint and other distributions."), tag: "v0.9.1" },
+            { type: "aboutCard", title: qsTr("Version and Environment"), desc: qsTr("Application version: %1\nQt Runtime: %2\nPlatform: Linux (%3)").arg("0.9.1").arg(AppSettings.qtVersion).arg(Qt.platform.os) },
             { type: "aboutCard", title: qsTr("Source Code & Repository"), desc: "https://github.com/Grekto-dev/win11-like-terminal", link: "https://github.com/Grekto-dev/win11-like-terminal" },
             { type: "aboutCard", title: qsTr("License"), desc: qsTr("Open source under the MIT License. Includes Cascadia Mono (SIL OFL), libvterm (MIT), and Fluent UI System Icons (MIT).") }
         ]

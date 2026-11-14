@@ -47,7 +47,7 @@ fi
 
 echo ""
 echo "=========================================================="
-echo " Instalação concluída com sucesso! (Versão 0.9.0)"
+echo " Instalação concluída com sucesso! (Versão 0.9.1)"
 echo " Você já pode abrir digitando: win11terminal"
 echo " Ou procurando por 'Terminal' no menu de aplicativos."
 echo "=========================================================="
