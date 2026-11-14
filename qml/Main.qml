@@ -57,6 +57,7 @@ ApplicationWindow {
 
     readonly property bool maximized: visibility === Window.Maximized
     readonly property bool fullscreen: visibility === Window.FullScreen
+    readonly property bool rounded: !maximized && !fullscreen
     property int currentIndex: 0
     // The pages, in the tabs' order (the children of `pages` keep creation order).
     property var pageList: []
@@ -325,8 +326,17 @@ ApplicationWindow {
         anchors.fill: parent
         // Opaque behind the panes, unless the profile is translucent: then the panes paint their own.
         color: currentPage && currentPage.opacityValue < 1 ? "transparent" : win.terminalBackground
-        radius: win.maximized || win.fullscreen ? 0 : Theme.windowRadius
+        // Square: the rounded corners come from the mask below (a rectangle's own radius would
+        // leave the bar's and the panes' square corners sticking out of it).
+        radius: 0
         clip: true
+        layer.enabled: win.rounded
+        layer.smooth: true
+        layer.effect: ShaderEffect {
+            property size size: Qt.size(frame.width, frame.height)
+            property real radius: Theme.windowRadius
+            fragmentShader: "qrc:/shaders/roundmask.frag.qsb"
+        }
 
         // The title bar: tabs, "+ ⌄", and the caption buttons.
         Rectangle {
@@ -396,14 +406,15 @@ ApplicationWindow {
             anchors.leftMargin: win.maximized ? 0 : 1; anchors.rightMargin: win.maximized ? 0 : 1; anchors.bottomMargin: win.maximized ? 0 : 1
         }
 
-        // The system's 1px border.
-        Rectangle {
-            anchors.fill: parent
-            color: "transparent"
-            radius: parent.radius
-            border.width: win.maximized ? 0 : 1
-            border.color: Theme.windowBorder
-        }
+    }
+
+    // The system's 1px border, over the masked frame; same radius as the mask.
+    Rectangle {
+        anchors.fill: parent
+        color: "transparent"
+        radius: win.rounded ? Theme.windowRadius : 0
+        border.width: win.maximized ? 0 : 1
+        border.color: Theme.windowBorder
     }
 
     MenuPanel {

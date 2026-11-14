@@ -108,6 +108,7 @@ if(NOT WIN11TERMINAL_CORE_ONLY)
       FILES
           shaders/glyph.vert
           shaders/glyph.frag
+          shaders/roundmask.frag
   )
 
   target_include_directories(win11terminal PRIVATE src src/view src/app)
